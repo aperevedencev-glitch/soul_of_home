@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Чек-лист: готовы ли вы к ремонту — Soul of House</title>
+<meta name="description" content="15 пунктов по 5 категориям — проверьте, готовы ли вы начинать дизайн-проект или ремонт, и получите короткий разбор от дизайнера.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B2118'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23E8905A' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Чек-лист: готовы ли вы к ремонту — Soul of House">
+<meta property="og:description" content="15 пунктов по 5 категориям — проверьте, готовы ли вы начинать дизайн-проект или ремонт.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Soul of House">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress"><i id="scrollProgress"></i></div>
+
+<header class="container nav">
+  <a href="index.html" class="logo">Soul of House</a>
+  <nav class="site-nav">
+    <a href="index.html">Главная</a>
+    <a href="pricing.html">Услуги</a>
+    <a href="quiz.html">Диагностика стиля</a>
+    <a href="checklist.html" class="active">Чек-лист</a>
+    <a href="blog/index.html">Блог</a>
+    <a href="contact.html">Контакты</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="quiz.html" class="badge">Какой стиль вам подходит?</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero compact">
+  <div class="eyebrow">Чек-лист</div>
+  <h1 style="font-size:clamp(34px,5.5vw,52px)">Готовы ли вы начинать ремонт</h1>
+  <p class="checklist-intro">15 пунктов, которые стоит проверить перед стартом дизайн-проекта или ремонта. Отметьте, что у вас уже есть — отметки сохранятся в этом браузере, и вы получите готовый список тем для первого разговора с дизайнером.</p>
+
+  <div class="checklist-whats">
+    <div class="c"><div class="n">1</div><div>Планировка</div></div>
+    <div class="c"><div class="n">2</div><div>Бюджет и сроки</div></div>
+    <div class="c"><div class="n">3</div><div>Стиль</div></div>
+    <div class="c"><div class="n">4</div><div>Техника и свет</div></div>
+    <div class="c"><div class="n">5</div><div>Мебель и декор</div></div>
+  </div>
+</section>
+
+<section class="container section tight">
+  <div class="checklist-progress-wrap">
+    <div class="checklist-progress-bar"><div class="fill" id="progressFill"></div></div>
+    <div class="checklist-progress-label" id="progressLabel">0 из 15 отмечено</div>
+  </div>
+
+  <div class="checklist-wrap">
+    <div class="checklist-group">
+      <h3>Планировка и пространство</h3>
+      <div class="checklist-item" data-id="1"><div class="box"></div><div class="txt"><b>Знаете, какие стены несущие</b>, а какие можно снести или передвинуть</div></div>
+      <div class="checklist-item" data-id="2"><div class="box"></div><div class="txt"><b>Понимаете состав семьи</b> — сколько человек живёт и как часто бывают гости</div></div>
+      <div class="checklist-item" data-id="3"><div class="box"></div><div class="txt"><b>Решили, нужна ли перепланировка</b> или устраивает текущая</div></div>
+    </div>
+
+    <div class="checklist-group">
+      <h3>Бюджет и сроки</h3>
+      <div class="checklist-item" data-id="4"><div class="box"></div><div class="txt"><b>Посчитали примерный бюджет</b> отдельно на ремонт и отдельно на мебель</div></div>
+      <div class="checklist-item" data-id="5"><div class="box"></div><div class="txt"><b>Заложили запас 15–20%</b> на непредвиденные расходы</div></div>
+      <div class="checklist-item" data-id="6"><div class="box"></div><div class="txt"><b>Определились со сроком въезда</b> — от него считается весь план работ</div></div>
+    </div>
+
+    <div class="checklist-group">
+      <h3>Стиль и вдохновение</h3>
+      <div class="checklist-item" data-id="7"><div class="box"></div><div class="txt"><b>Собрали подборку референсов</b> — Pinterest, Instagram, фото понравившихся интерьеров</div></div>
+      <div class="checklist-item" data-id="8"><div class="box"></div><div class="txt"><b>Понимаете, какой стиль вам близок</b> — или прошли диагностику стиля</div></div>
+      <div class="checklist-item" data-id="9"><div class="box"></div><div class="txt"><b>Обсудили общее видение с партнёром или семьёй</b> — чтобы не переделывать на середине</div></div>
+    </div>
+
+    <div class="checklist-group">
+      <h3>Технические вопросы <span class="note">— важно для готовых помещений</span></h3>
+      <div class="checklist-item" data-id="10"><div class="box"></div><div class="txt"><b>Знаете состояние проводки, труб и окон</b> — свежий ремонт или требует замены</div></div>
+      <div class="checklist-item" data-id="11"><div class="box"></div><div class="txt"><b>Определились с зонированием</b> — объединённая кухня-гостиная или раздельные комнаты</div></div>
+      <div class="checklist-item" data-id="12"><div class="box"></div><div class="txt"><b>Продумали освещение по зонам</b>, а не только одну люстру в центре комнаты</div></div>
+    </div>
+
+    <div class="checklist-group">
+      <h3>Мебель и декор</h3>
+      <div class="checklist-item" data-id="13"><div class="box"></div><div class="txt"><b>Составили список мебели</b>, которая переезжает со старого места</div></div>
+      <div class="checklist-item" data-id="14"><div class="box"></div><div class="txt"><b>Определили смысловой центр интерьера</b> — акцентная стена, предмет мебели или арт</div></div>
+      <div class="checklist-item" data-id="15"><div class="box"></div><div class="txt"><b>Решили, нужен полный проект</b> или хватит точечного подбора мебели и декора</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="container section tight" id="leadCapture">
+  <div class="crm-form-card">
+    <span class="tag">РАЗБОР</span>
+    <h3 style="font-size:20px;margin-top:10px">Получить разбор по вашим ответам</h3>
+    <p style="color:var(--muted);margin:8px 0 20px">Оставьте контакт — пришлём короткий разбор: какой формат вам подойдёт (консультация, подбор или полный проект) и с чего начать в первую очередь.</p>
+    <form id="checklistLeadForm" novalidate>
+      <div class="crm-form-field-wrap">
+        <input class="crm-input" type="text" id="clName" name="name" placeholder="Имя" autocomplete="name" required>
+      </div>
+      <div class="crm-form-field-wrap">
+        <input class="crm-input" type="text" id="clContact" name="contact" placeholder="Телефон или email" autocomplete="tel" required>
+      </div>
+      <!-- honeypot: скрытое поле-ловушка от ботов -->
+      <div class="crm-hp" aria-hidden="true"><input type="text" id="clCompany" name="company" tabindex="-1" autocomplete="off"></div>
+      <button class="crm-input crm-form-btn" type="submit" id="clSubmit">Получить разбор</button>
+      <p class="crm-form-note" id="clStatus">Нажмите «Получить разбор» — откроется письмо с вашими ответами, отправленное на наш адрес.</p>
+    </form>
+  </div>
+</section>
+
+<section class="container cta with-mascot">
+  <img class="cta-mascot" src="assets/neurocat.png" alt="Soul of House — нейрокот, маскот студии" width="900" height="900" loading="lazy">
+  <div class="cta-copy">
+    <h2>Не уверены, с чего начать?</h2>
+    <p>Короткая диагностика — 5 вопросов — покажет, какой стиль вам ближе и какой формат работы стоит выбрать с учётом пунктов из списка выше.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn cta-orange" id="checklistQuizLink" href="quiz.html?utm_source=checklist&amp;utm_medium=cta&amp;utm_campaign=checklist_funnel">Пройти диагностику →</a>
+      <a class="btn secondary" id="checklistBotLink" href="https://t.me/soulofhouse_design?start=trfc_checklist" target="_blank" rel="noopener">Написать в Telegram →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Soul of House</span>
+    <div class="foot-links">
+      <a href="index.html">Главная</a>
+      <a href="pricing.html">Услуги</a>
+      <a href="quiz.html">Диагностика</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="blog/index.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const h=document.documentElement.scrollHeight-innerHeight;
+ document.getElementById('scrollProgress').style.width=(h>0?scrollY/h*100:0)+'%';
+});
+</script>
+
+<script>
+(function(){
+  var STORAGE_KEY = 'soulofhouse-checklist-15';
+  var items = Array.prototype.slice.call(document.querySelectorAll('.checklist-item[data-id]'));
+  var total = items.length;
+  var fill = document.getElementById('progressFill');
+  var label = document.getElementById('progressLabel');
+
+  function loadState(){
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveState(state){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  var state = loadState();
+  var allCheckedGoalSent = false;
+
+  function ymGoal(name){
+    try { if (typeof window.ym === 'function' && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID, 'reachGoal', name); } catch (e) {}
+  }
+  window.sohYmGoal = ymGoal;
+
+  function updateProgress(){
+    var checked = items.filter(function(it){ return it.classList.contains('checked'); }).length;
+    var pct = total ? Math.round(checked / total * 100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = checked + ' из ' + total + ' отмечено';
+    if (total && checked === total && !allCheckedGoalSent) {
+      allCheckedGoalSent = true;
+      ymGoal('checklist_all_checked');
+    }
+  }
+
+  items.forEach(function(item){
+    var id = item.getAttribute('data-id');
+    if (state[id]) item.classList.add('checked');
+    item.addEventListener('click', function(){
+      item.classList.toggle('checked');
+      state[id] = item.classList.contains('checked');
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+
+  // Список отмеченных пунктов текстом — для формы разбора ниже
+  window.getCheckedChecklistItems = function(){
+    return items
+      .filter(function(it){ return it.classList.contains('checked'); })
+      .map(function(it){
+        var txt = it.querySelector('.txt');
+        return txt ? txt.textContent.trim() : '';
+      })
+      .filter(Boolean);
+  };
+
+  var quizLink = document.getElementById('checklistQuizLink');
+  if (quizLink) quizLink.addEventListener('click', function(){ ymGoal('checklist_quiz_click'); });
+  var botLink = document.getElementById('checklistBotLink');
+  if (botLink) botLink.addEventListener('click', function(){ ymGoal('checklist_bot_click'); });
+})();
+</script>
+
+<script>
+(function(){
+  // У Soul of House пока нет CRM/вебхука — заявка формируется как письмо
+  // на почту студии через mailto:, без передачи данных на сторонний сервер.
+  var CONTACT_EMAIL = 'hello@soulofhouse.ru';
+  var form = document.getElementById('checklistLeadForm');
+  if (!form) return;
+  var status = document.getElementById('clStatus');
+  var submitBtn = document.getElementById('clSubmit');
+  var defaultNote = status.textContent;
+
+  function setStatus(text, kind){
+    status.textContent = text;
+    status.className = 'crm-form-note' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // honeypot: если скрытое поле заполнено — это бот, тихо игнорируем
+    if (document.getElementById('clCompany').value) {
+      form.reset();
+      return;
+    }
+
+    var name = document.getElementById('clName').value.trim();
+    var contact = document.getElementById('clContact').value.trim();
+
+    if (!name || !contact) {
+      setStatus('Заполните имя и телефон или email.', 'crm-form-error');
+      return;
+    }
+
+    var checked = (typeof window.getCheckedChecklistItems === 'function') ? window.getCheckedChecklistItems() : [];
+    var comment = checked.length
+      ? 'Отмечено в чек-листе (' + checked.length + ' из 15):\n' + checked.map(function(t){ return '— ' + t; }).join('\n')
+      : 'Чек-лист открыт, пункты не отмечены.';
+
+    var subject = 'Заявка с чек-листа Soul of House';
+    var body = 'Имя: ' + name + '\nКонтакт: ' + contact + '\n\n' + comment;
+    var mailto = 'mailto:' + encodeURIComponent(CONTACT_EMAIL) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+    setStatus('Открываем ваш почтовый клиент с готовым письмом — просто нажмите «Отправить». Если письмо не открылось, напишите нам в Telegram.', 'crm-form-success');
+    if (typeof window.sohYmGoal === 'function') window.sohYmGoal('checklist_form_submit');
+  });
+})();
+</script>
+</body>
+</html>

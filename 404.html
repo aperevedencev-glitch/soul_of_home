@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Страница не найдена — Soul of House</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B2118'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23E8905A' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress"><i id="scrollProgress"></i></div>
+
+<header class="container nav">
+  <a href="index.html" class="logo">Soul of House</a>
+  <nav class="site-nav">
+    <a href="index.html">Главная</a>
+    <a href="pricing.html">Услуги</a>
+    <a href="quiz.html">Диагностика стиля</a>
+    <a href="checklist.html">Чек-лист</a>
+    <a href="blog/index.html">Блог</a>
+    <a href="contact.html">Контакты</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="quiz.html" class="badge">Какой стиль вам подходит?</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero compact" style="text-align:center">
+  <div class="eyebrow">Ошибка 404</div>
+  <h1 style="font-size:clamp(60px,10vw,140px);margin:10px auto 20px;color:var(--soft);letter-spacing:-.03em">404</h1>
+  <h2 style="max-width:640px;margin:0 auto 16px">Такую комнату мы ещё не спроектировали</h2>
+  <p class="lead" style="max-width:560px;margin:0 auto">Страница не найдена — возможно, ссылка устарела или в адресе опечатка. Но мы уже готовы обсудить настоящий проект.</p>
+  <div class="hero-actions" style="justify-content:center;margin-top:34px">
+    <a class="btn cta-orange" href="index.html">На главную →</a>
+    <a class="btn secondary" href="quiz.html">Пройти диагностику</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Soul of House</span>
+    <div class="foot-links">
+      <a href="index.html">Главная</a>
+      <a href="pricing.html">Услуги</a>
+      <a href="quiz.html">Диагностика</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="blog/index.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const h=document.documentElement.scrollHeight-innerHeight;
+ document.getElementById('scrollProgress').style.width=(h>0?scrollY/h*100:0)+'%';
+});
+</script>
+</body>
+</html>

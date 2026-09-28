@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контент-план: новогодние игрушки — трекер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#16281F;
+    --pine-deep:#0E1C16;
+    --ivory:#F6F1E4;
+    --paper:#FFFFFF;
+    --gold:#C79A46;
+    --gold-soft:#E4C77E;
+    --berry:#8C2F3B;
+    --line:#E2DAC5;
+    --muted:#6E7B71;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; background:var(--ivory); color:var(--pine-deep); font-family:'Manrope',sans-serif; -webkit-font-smoothing:antialiased; }
+  body{ padding:0 0 80px; }
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:var(--pine-deep);
+    color:var(--ivory);
+    padding:44px 24px 32px;
+  }
+  .head-inner{ max-width:920px; margin:0 auto; }
+  header .eyebrow{ font-size:13px; color:var(--gold-soft); margin:0 0 10px; }
+  header h1{
+    font-family:'Fraunces',serif; font-weight:500; font-size:32px; line-height:1.2;
+    margin:0 0 10px; max-width:560px;
+  }
+  header p.sub{ font-size:14.5px; color:rgba(246,241,228,0.7); margin:0 0 28px; max-width:520px; line-height:1.55; }
+
+  .progress-row{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .progress-track{
+    flex:1; min-width:180px; height:8px; border-radius:99px; background:rgba(246,241,228,0.14); overflow:hidden;
+  }
+  .progress-fill{ height:100%; background:var(--gold); width:0%; transition:width 0.25s ease; border-radius:99px; }
+  .progress-label{ font-size:13px; color:var(--gold-soft); white-space:nowrap; font-weight:600; }
+
+  .stat-chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+  .chip{
+    font-size:12.5px; padding:6px 12px; border-radius:99px; border:1px solid rgba(246,241,228,0.22);
+    color:rgba(246,241,228,0.85); display:flex; align-items:center; gap:6px;
+  }
+  .chip .dot{ width:7px; height:7px; border-radius:50%; }
+
+  /* ---------- WEEK NAV ---------- */
+  .week-nav{
+    position:sticky; top:0; z-index:5;
+    background:var(--ivory); border-bottom:1px solid var(--line);
+    display:flex; gap:6px; overflow-x:auto; padding:12px 24px;
+  }
+  .week-nav a{
+    flex-shrink:0; font-size:13px; font-weight:600; color:var(--muted);
+    padding:7px 14px; border-radius:99px; text-decoration:none; border:1px solid transparent;
+  }
+  .week-nav a:hover{ color:var(--pine-deep); border-color:var(--line); }
+
+  main{ max-width:920px; margin:0 auto; padding:36px 24px 0; }
+
+  .week-section{ margin-bottom:44px; scroll-margin-top:70px; }
+  .week-title{ display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+  .week-title h2{ font-family:'Fraunces',serif; font-weight:500; font-size:21px; margin:0; }
+  .week-title span{ font-size:12.5px; color:var(--muted); }
+  .week-theme{ font-size:13.5px; color:var(--muted); margin:0 0 18px; max-width:640px; line-height:1.5; }
+
+  /* ---------- EVENT CARD ---------- */
+  .event{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    margin-bottom:12px; overflow:hidden;
+  }
+  .event[data-status="Опубликовано"]{ border-left:3px solid #4F7A5B; }
+  .event[data-status="Готово к публикации"]{ border-left:3px solid var(--gold); }
+  .event[data-status="В работе"]{ border-left:3px solid #B8934F; }
+  .event[data-status="Не начато"]{ border-left:3px solid var(--line); }
+
+  .event-head{
+    display:flex; align-items:flex-start; gap:14px; padding:16px 18px; cursor:pointer;
+  }
+  .day-badge{
+    flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--pine-deep); color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:15px; font-weight:600;
+  }
+  .event-meta{ flex:1; min-width:0; }
+  .event-meta .tags-row{ display:flex; gap:8px; align-items:center; margin-bottom:4px; flex-wrap:wrap; }
+  .badge{ font-size:11px; font-weight:600; padding:2px 8px; border-radius:99px; background:#F1ECDD; color:var(--muted); }
+  .badge.weekday{ background:transparent; color:var(--muted); padding-left:0; }
+  .event-meta h3{ font-size:15px; font-weight:600; margin:0; line-height:1.4; color:var(--pine-deep); }
+  .chevron{ flex-shrink:0; color:var(--muted); transition:transform 0.15s ease; margin-top:8px; }
+  .event.open .chevron{ transform:rotate(180deg); }
+
+  .event-body{ display:none; padding:0 18px 18px; }
+  .event.open .event-body{ display:block; }
+  .event-body p.desc{ font-size:14px; line-height:1.6; color:#3E4A42; margin:0 0 12px; }
+  .hashtags{ font-size:12.5px; color:var(--gold); word-break:break-word; margin:0 0 16px; }
+
+  .controls-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .controls-grid .full{ grid-column:1 / -1; }
+  .field label{ display:block; font-size:11.5px; font-weight:700; color:var(--muted); margin-bottom:5px; text-transform:none; }
+  select, input[type=date], input[type=url], textarea{
+    width:100%; font-family:'Manrope',sans-serif; font-size:13.5px; color:var(--pine-deep);
+    background:#FCFAF3; border:1px solid var(--line); border-radius:var(--radius); padding:9px 10px; outline:none;
+  }
+  select:focus, input:focus, textarea:focus{ border-color:var(--gold); box-shadow:0 0 0 3px rgba(199,154,70,0.18); }
+  textarea{ resize:vertical; min-height:52px; }
+
+  /* ---------- FOOTER ACTIONS ---------- */
+  .footer-bar{
+    max-width:920px; margin:32px auto 0; padding:0 24px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  }
+  .footer-bar .buttons{ display:flex; gap:10px; }
+  button.action{
+    font-family:'Manrope',sans-serif; font-size:13.5px; font-weight:700; border-radius:var(--radius);
+    padding:11px 18px; cursor:pointer; border:1px solid var(--line); background:var(--paper); color:var(--pine-deep);
+  }
+  button.action.primary{ background:var(--pine-deep); color:var(--ivory); border-color:var(--pine-deep); }
+  button.action.primary:hover{ background:#22392C; }
+  button.action:hover{ border-color:var(--gold); }
+  .copy-note{ font-size:12.5px; color:var(--muted); }
+
+  @media (max-width:640px){
+    .controls-grid{ grid-template-columns:1fr; }
+    header h1{ font-size:26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <p class="eyebrow">30-дневный прогрев · дизайнеры новогодних игрушек</p>
+    <h1>Трекер контент-плана</h1>
+    <p class="sub">Отмечайте статус каждого дня, добавляйте ссылку на опубликованный пост и заметки — прогресс считается автоматически.</p>
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 из 30 опубликовано</div>
+    </div>
+    <div class="stat-chips" id="statChips"></div>
+  </div>
+</header>
+
+<nav class="week-nav" id="weekNav"></nav>
+
+<main id="main"></main>
+
+<div class="footer-bar">
+  <span class="copy-note" id="copyNote">Данные хранятся только в этой открытой вкладке.</span>
+  <div class="buttons">
+    <button class="action" id="resetBtn">Сбросить всё</button>
+    <button class="action primary" id="exportBtn">Скопировать статус плана</button>
+  </div>
+</div>
+
+<script>
+  const WEEKS = [
+    { id:'week-1', label:'Неделя 1', range:'Дни 1–5', theme:'Боль и позиционирование: показываем разрыв между мастерством и доходом, собираем сегментацию аудитории.' },
+    { id:'week-2', label:'Неделя 2', range:'Дни 6–10', theme:'Обучение: конкретные инструменты монетизации — цена, портфолио, каналы сбыта, съёмка.' },
+    { id:'week-3', label:'Неделя 3', range:'Дни 11–15', theme:'Доказательства: кейсы учеников и личной практики с цифрами до/после.' },
+    { id:'week-4', label:'Неделя 4', range:'Дни 16–20', theme:'Работа с возражениями: разоблачение мифов, которые держат аудиторию в низком чеке.' },
+    { id:'week-5', label:'Неделя 5', range:'Дни 21–25', theme:'Практическая польза: лайфхаки по времени, переговорам, упаковке, автоматизации.' },
+    { id:'week-6', label:'Неделя 6', range:'Дни 26–30', theme:'Вовлечение и продажа: диалог о возражениях, дорожная карта роста, FAQ, приглашение на продукт.' },
+  ];
+
+  const EVENTS = [
+    {day:1, weekday:'Понедельник', platform:'Пост в Telegram', title:'Почему талантливый мастер сидит без денег, а посредственный — зарабатывает 500к', desc:'Разбираем разницу между «я классно делаю игрушки» и «я умею на этом зарабатывать». Показываем, что доход определяет не мастерство, а бизнес-навыки: упаковка, позиционирование, каналы продаж. Задаём тон всему циклу прогрева.', tags:'#новогодниеигрушки #хендмейдбизнес #заработокнахендмейде #дизайнигрушек #фрилансдизайнер'},
+    {day:2, weekday:'Вторник', platform:'Карусель в Instagram', title:'5 признаков, что вы дизайнер-любитель, а не дизайнер-предприниматель', desc:'Карусель-чеклист с конкретными признаками: нет прайса, работаете только «на заказ от знакомых», не считаете себестоимость. В конце — призыв написать в комментариях свой результат.', tags:'#ёлочныеигрушки #handmadebiznes #новогоднийдекор #дизайнподарков #мастеручится #творческийбизнес'},
+    {day:3, weekday:'Среда', platform:'Видео на YouTube', title:'Сколько реально зарабатывают дизайнеры новогодних игрушек в 2026 году', desc:'Видео-разбор реальных диапазонов дохода: от продажи на ярмарке до оптовых контрактов с сетями подарков. Даём аудитории ориентиры по чекам и объёмам, чтобы было видно, куда расти.', tags:'#новогодниеигрушки #заработокнатворчестве #handmade #дизайнерскийбизнес #рождественскиеподарки #фриланс'},
+    {day:4, weekday:'Четверг', platform:'Reels в Instagram', title:'Один клиент присылает эскиз игрушки за 12 000 рублей — а вы продаёте свою за 500. Вот в чём разница', desc:'Динамичный ролик-сравнение двух подходов к продукту: «просто игрушка» и «авторский дизайн-объект». Показываем, как упаковка смысла меняет цену в разы.', tags:'#авторскийдизайн #новогодниеигрушки #ценанаизделия #хендмейдпродажи #дизайнподарков'},
+    {day:5, weekday:'Пятница', platform:'Пост в Telegram (опрос)', title:'Расскажите, сколько сейчас зарабатываете на своих игрушках и подарках?', desc:'Пост-опрос с голосованием и комментариями, чтобы прогреть аудиторию к честному разговору о деньгах и собрать сегментацию для дальнейшего контента.', tags:'#опросподписчиков #новогоднийдекор #заработокнахендмейде #дизайнигрушек #фрилансер'},
+
+    {day:6, weekday:'Понедельник', platform:'Пост в Telegram', title:'Формула цены на авторскую ёлочную игрушку, которую не стыдно показать клиенту', desc:'Пошаговая формула расчёта: себестоимость материалов + время + экспертность + упаковка бренда. Разбираем на конкретном числовом примере, чтобы аудитория перестала продавать в ноль.', tags:'#ценообразование #новогодниеигрушки #handmadebiznes #дизайнподарков #фрилансдизайнер'},
+    {day:7, weekday:'Вторник', platform:'Карусель в Instagram', title:'Как упаковать портфолио дизайнера новогодних игрушек за один вечер', desc:'Пошаговая карусель: что снимать, как оформить шапку профиля и сайт, какие 3 работы показать в первую очередь, чтобы клиент захотел купить сразу.', tags:'#портфолиодизайнера #новогоднийдекор #рождественскиеподарки #handmade #творческийбизнес #упаковкабренда'},
+    {day:8, weekday:'Среда', platform:'Видео на YouTube', title:'Где продавать новогодние игрушки, кроме своих соцсетей: 6 каналов сбыта', desc:'Обзорное видео с разбором маркетплейсов, ярмарок, оптовых магазинов подарков, корпоративных заказов и коллабораций с брендами — с плюсами и минусами каждого канала.', tags:'#каналыпродаж #новогодниеигрушки #маркетплейсы #handmadebiznes #рождественскиеподарки #b2bпродажи'},
+    {day:9, weekday:'Четверг', platform:'Reels в Instagram', title:'Как за 30 секунд снять новогоднюю игрушку так, чтобы её захотели купить', desc:'Быстрый лайфхак по предметной съёмке на телефон: свет, фон, ракурс. Показываем «было / стало» для наглядности прямо в кадре.', tags:'#предметнаясъемка #новогодниеигрушки #контентдлясоцсетей #handmade #дизайнподарков'},
+    {day:10, weekday:'Пятница', platform:'Пост в Telegram', title:'3 вопроса, которые нужно задать себе перед тем, как поднять цены', desc:'Практичный пост-инструкция для тех, кто боится повышать чек. Снимает внутренний барьер «а вдруг перестанут покупать» и подводит к конкретному действию.', tags:'#поднятиецен #новогодниеигрушки #фрилансдизайнер #handmadebiznes #психологияпродаж'},
+
+    {day:11, weekday:'Понедельник', platform:'Пост в Telegram', title:'Как ученица подняла средний чек с 800 до 4 500 рублей за игрушку за 2 месяца', desc:'Разбор реального кейса: что именно изменили в позиционировании и подаче товара, какие были возражения клиентов и как их закрыли на практике.', tags:'#кейсученицы #новогодниеигрушки #ростдохода #handmadebiznes #дизайнподарков'},
+    {day:12, weekday:'Вторник', platform:'Карусель в Instagram', title:'До / после: как изменилась подача одной и той же игрушки — и продажи выросли в 3 раза', desc:'Визуальное сравнение старой и новой карточки товара с разбором конкретных изменений в свете, композиции и тексте описания.', tags:'#докипосле #новогоднийдекор #упаковкатовара #handmade #ростпродаж #рождественскиеподарки'},
+    {day:13, weekday:'Среда', platform:'Видео на YouTube', title:'Разбор реального заказа: как я договорилась на опт с сетью подарочных магазинов', desc:'Пошаговый рассказ о переговорах с байером — от первого письма до подписания договора, с конкретными фразами и цифрами объёма поставки.', tags:'#b2bпродажи #новогодниеигрушки #оптовыепродажи #handmadebiznes #переговоры #рождественскиеподарки'},
+    {day:14, weekday:'Четверг', platform:'Reels в Instagram', title:'Как один пост в Telegram принёс мне 7 заказов на новогодний декор', desc:'Короткая история-кейс о конкретном посте, который сработал, с разбором, почему именно он зацепил аудиторию и что в нём можно повторить.', tags:'#кейс #новогоднийдекор #контентмаркетинг #handmade #заявкиизсоцсетей'},
+    {day:15, weekday:'Пятница', platform:'Пост в Telegram (опрос)', title:'Какой кейс из моей практики вас удивил больше всего? Разберу в следующем посте', desc:'Интерактивный пост со сбором вопросов и голосов аудитории для следующего разбора — усиливает вовлечённость и ощущение диалога с экспертом.', tags:'#вовлечение #новогодниеигрушки #handmadebiznes #дизайнподарков #фрилансер'},
+
+    {day:16, weekday:'Понедельник', platform:'Пост в Telegram', title:'Миф: «На хендмейде много не заработаешь» — почему это неправда в 2026 году', desc:'Разбираем главный ограничивающий миф аудитории с фактами и примерами, снимаем страх перед масштабированием бизнеса на своём мастерстве.', tags:'#мифыохендмейде #новогодниеигрушки #заработокнатворчестве #handmadebiznes #дизайнподарков'},
+    {day:17, weekday:'Вторник', platform:'Карусель в Instagram', title:'5 мифов о продаже авторских новогодних игрушек, в которые пора перестать верить', desc:'Карусель с популярными заблуждениями: «нужно много подписчиков», «зимой надо демпинговать» и другими — и фактами, которые их опровергают.', tags:'#мифыибизнес #новогоднийдекор #handmade #дизайнерскийбизнес #рождественскиеподарки #фрилансдизайнер'},
+    {day:18, weekday:'Среда', platform:'Видео на YouTube', title:'Разоблачаю 3 мифа о курсах по заработку на хендмейде', desc:'Честное видео о том, чем реальное обучение отличается от пустых обещаний: какие результаты нереалистичны, а какие навыки правда дают доход.', tags:'#честноеобучение #новогодниеигрушки #handmadebiznes #заработокнатворчестве #курсыдлядизайнеров'},
+    {day:19, weekday:'Четверг', platform:'Reels в Instagram', title:'Думаете, что демпинг спасёт продажи перед Новым годом? Вот что происходит на самом деле', desc:'Резкий, цепляющий ролик, разбивающий стереотип о снижении цен как способе увеличить продажи в высокий сезон.', tags:'#ценообразование #новогодниеигрушки #handmade #дизайнподарков #сезонныепродажи'},
+    {day:20, weekday:'Пятница', platform:'Пост в Telegram', title:'А в какой миф о заработке на творчестве вы сами верили дольше всего?', desc:'Вопрос аудитории для сбора личных историй и укрепления доверия через открытый диалог о страхах и заблуждениях.', tags:'#вопросподписчикам #новогоднийдекор #handmadebiznes #творческийбизнес #фрилансер'},
+
+    {day:21, weekday:'Понедельник', platform:'Пост в Telegram', title:'Лайфхак: как за 15 минут в день вести соцсети и не выгорать в декабре', desc:'Практичный пост про тайм-менеджмент контента в высокий сезон: шаблоны, заготовки, делегирование простых задач ассистенту.', tags:'#контентплан #новогодниеигрушки #тайммендежмент #handmadebiznes #фрилансдизайнер'},
+    {day:22, weekday:'Вторник', platform:'Карусель в Instagram', title:'7 фраз для переписки с клиентом, которые поднимают средний чек без давления', desc:'Карусель с готовыми речевыми модулями: мягкая допродажа, ответ на возражение «дорого», повышение цены без потери клиента.', tags:'#скриптыпродаж #новогоднийдекор #handmade #дизайнподарков #общениесклиентом'},
+    {day:23, weekday:'Среда', platform:'Видео на YouTube', title:'Как упаковать новогодний набор подарков так, чтобы его хотели купить не глядя на цену', desc:'Видео-урок по визуальной и смысловой упаковке подарочного набора: от коробки и открытки до истории бренда внутри.', tags:'#упаковкаподарка #рождественскиеподарки #handmadebiznes #дизайнерскийбизнес #новогоднийдекор'},
+    {day:24, weekday:'Четверг', platform:'Reels в Instagram', title:'Лайфхак, который экономит 5 часов в неделю на общении с клиентами', desc:'Показываем конкретный инструмент: шаблон автоответа, FAQ-документ или форма заявки — который снимает рутину в высокий сезон.', tags:'#автоматизациябизнеса #новогодниеигрушки #handmade #продуктивность #фрилансер'},
+    {day:25, weekday:'Пятница', platform:'Пост в Telegram', title:'Поделитесь своим лучшим лайфхаком для сезона высоких продаж — соберём подборку', desc:'Пост-краудсорсинг лайфхаков от аудитории: повышает вовлечённость и даёт готовый материал для будущего дайджеста от подписчиков.', tags:'#лайфхакидлямастеров #новогоднийдекор #handmadebiznes #дизайнподарков #сообществомастеров'},
+
+    {day:26, weekday:'Понедельник', platform:'Пост в Telegram', title:'Что мешает вам выйти на доход 500 000 рублей в месяц? Отвечу каждому лично', desc:'Личный, тёплый пост-приглашение к диалогу в комментариях или директе, который выявляет главные возражения аудитории перед предложением продукта.', tags:'#доходотдизайна #новогодниеигрушки #handmadebiznes #личныйбренд #фрилансдизайнер'},
+    {day:27, weekday:'Вторник', platform:'Карусель в Instagram', title:'Путь дизайнера от 30 000 до 500 000 рублей в месяц: 5 ключевых шагов', desc:'Карусель-дорожная карта, которая суммирует весь пройденный за месяц контент в понятную систему — логичный мостик к продукту.', tags:'#путькдоходу #новогоднийдекор #handmade #дизайнерскийбизнес #ростдохода #рождественскиеподарки'},
+    {day:28, weekday:'Среда', platform:'Видео на YouTube', title:'Разбираю 5 частых вопросов о заработке на дизайне новогодних игрушек', desc:'Формат FAQ-видео с ответами на самые частые вопросы аудитории, собранные за месяц прогрева — усиливает доверие и снимает последние сомнения.', tags:'#частыевопросы #новогодниеигрушки #handmadebiznes #дизайнподарков #заработокнатворчестве'},
+    {day:29, weekday:'Четверг', platform:'Reels в Instagram', title:'Что будет, если ничего не менять в своём бизнесе в этом сезоне', desc:'Эмоциональный, слегка провокационный ролик о цене бездействия — подводит аудиторию к мысли о необходимости системных изменений.', tags:'#ценанебездействия #новогодниеигрушки #handmade #ростдохода #дизайнподарков'},
+    {day:30, weekday:'Пятница', platform:'Пост в Telegram', title:'Открываю запись на разбор вашего бизнеса дизайнера новогодних игрушек — 10 мест', desc:'Прямой продающий пост с ограничением по местам, который переводит тёплую аудиторию в заявку на консультацию или курс.', tags:'#записьнаразбор #новогодниеигрушки #handmadebiznes #дизайнподарков #фрилансдизайнер'},
+  ];
+
+  const STATUSES = ['Не начато','В работе','Готово к публикации','Опубликовано'];
+  const STATUS_COLOR = {'Не начато':'#B9B2A0','В работе':'#B8934F','Готово к публикации':'#C79A46','Опубликовано':'#4F7A5B'};
+
+  // in-memory state only — resets on reload
+  const state = {};
+  EVENTS.forEach(e => { state[e.day] = { status:'Не начато', link:'', date:'', note:'' }; });
+
+  function weekOf(day){ return WEEKS[Math.floor((day-1)/5)]; }
+
+  function renderNav(){
+    const nav = document.getElementById('weekNav');
+    nav.innerHTML = WEEKS.map(w => `<a href="#${w.id}">${w.label} · ${w.range}</a>`).join('');
+  }
+
+  function renderMain(){
+    const main = document.getElementById('main');
+    main.innerHTML = WEEKS.map(w => {
+      const items = EVENTS.filter(e => weekOf(e.day).id === w.id);
+      return `
+        <section class="week-section" id="${w.id}">
+          <div class="week-title"><h2>${w.label}</h2><span>${w.range}</span></div>
+          <p class="week-theme">${w.theme}</p>
+          ${items.map(eventCard).join('')}
+        </section>`;
+    }).join('');
+  }
+
+  function eventCard(e){
+    const s = state[e.day];
+    return `
+      <article class="event" data-day="${e.day}" data-status="${s.status}">
+        <div class="event-head" onclick="toggleCard(${e.day})">
+          <div class="day-badge">${e.day}</div>
+          <div class="event-meta">
+            <div class="tags-row">
+              <span class="badge weekday">${e.weekday}</span>
+              <span class="badge">${e.platform}</span>
+            </div>
+            <h3>${e.title}</h3>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="event-body">
+          <p class="desc">${e.desc}</p>
+          <p class="hashtags">${e.tags}</p>
+          <div class="controls-grid">
+            <div class="field">
+              <label for="status-${e.day}">Статус</label>
+              <select id="status-${e.day}" onchange="updateField(${e.day}, 'status', this.value)">
+                ${STATUSES.map(st => `<option value="${st}" ${st === s.status ? 'selected' : ''}>${st}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label for="date-${e.day}">Дата публикации</label>
+              <input type="date" id="date-${e.day}" value="${s.date}" onchange="updateField(${e.day}, 'date', this.value)">
+            </div>
+            <div class="field full">
+              <label for="link-${e.day}">Ссылка на опубликованный пост</label>
+              <input type="url" id="link-${e.day}" placeholder="https://..." value="${s.link}" onchange="updateField(${e.day}, 'link', this.value)">
+            </div>
+            <div class="field full">
+              <label for="note-${e.day}">Заметка</label>
+              <textarea id="note-${e.day}" placeholder="Что изменить, о чём не забыть" onchange="updateField(${e.day}, 'note', this.value)">${s.note}</textarea>
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  window.toggleCard = function(day){
+    const card = document.querySelector(`.event[data-day="${day}"]`);
+    card.classList.toggle('open');
+  };
+
+  window.updateField = function(day, key, value){
+    state[day][key] = value;
+    if(key === 'status'){
+      document.querySelector(`.event[data-day="${day}"]`).setAttribute('data-status', value);
+      renderSummary();
+    }
+  };
+
+  function renderSummary(){
+    const counts = { 'Не начато':0, 'В работе':0, 'Готово к публикации':0, 'Опубликовано':0 };
+    Object.values(state).forEach(s => counts[s.status]++);
+
+    const published = counts['Опубликовано'];
+    document.getElementById('progressFill').style.width = (published / EVENTS.length * 100) + '%';
+    document.getElementById('progressLabel').textContent = `${published} из ${EVENTS.length} опубликовано`;
+
+    document.getElementById('statChips').innerHTML = STATUSES.map(st =>
+      `<span class="chip"><span class="dot" style="background:${STATUS_COLOR[st]}"></span>${st}: ${counts[st]}</span>`
+    ).join('');
+  }
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    EVENTS.forEach(e => { state[e.day] = { status:'Не начато', link:'', date:'', note:'' }; });
+    renderMain();
+    renderSummary();
+  });
+
+  document.getElementById('exportBtn').addEventListener('click', () => {
+    const lines = EVENTS.map(e => {
+      const s = state[e.day];
+      let line = `День ${e.day} (${e.weekday}, ${e.platform}) — ${s.status}`;
+      if(s.date) line += ` · дата: ${s.date}`;
+      if(s.link) line += ` · ссылка: ${s.link}`;
+      if(s.note) line += ` · заметка: ${s.note}`;
+      return line;
+    });
+    const text = lines.join('\n');
+    const note = document.getElementById('copyNote');
+    navigator.clipboard.writeText(text).then(() => {
+      note.textContent = 'Статус плана скопирован в буфер обмена.';
+      setTimeout(() => { note.textContent = 'Данные хранятся только в этой открытой вкладке.'; }, 3000);
+    }).catch(() => {
+      note.textContent = 'Не удалось скопировать — скопируйте вручную из консоли.';
+      console.log(text);
+    });
+  });
+
+  renderNav();
+  renderMain();
+  renderSummary();
+</script>
+
+</body>
+</html>

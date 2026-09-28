@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Контакты — Soul of House</title>
+<meta name="description" content="Soul of House — дизайн интерьера квартир и домов. Напишите нам в Telegram, Instagram или оставьте заявку на сайте.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B2118'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23E8905A' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Контакты — Soul of House">
+<meta property="og:description" content="Напишите нам в Telegram, Instagram или оставьте заявку на сайте.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Soul of House">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress"><i id="scrollProgress"></i></div>
+
+<header class="container nav">
+  <a href="index.html" class="logo">Soul of House</a>
+  <nav class="site-nav">
+    <a href="index.html">Главная</a>
+    <a href="pricing.html">Услуги</a>
+    <a href="quiz.html">Диагностика стиля</a>
+    <a href="checklist.html">Чек-лист</a>
+    <a href="blog/index.html">Блог</a>
+    <a href="contact.html" class="active">Контакты</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="quiz.html" class="badge">Какой стиль вам подходит?</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero compact">
+  <div class="hero-grid quiz-hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Контакты</div>
+      <h1 style="font-size:clamp(34px,5.5vw,58px)">Расскажите о своём пространстве</h1>
+      <p class="lead">Soul of House — дизайн интерьера квартир и домов, а также консультации и подбор мебели и декора для тех, кому не нужен полный проект. Напишите нам удобным способом — ответим и обсудим формат.</p>
+    </div>
+    <div class="hero-media quiz-hero-media">
+      <img src="assets/neurocat.png" alt="Soul of House — нейрокот, маскот студии" width="900" height="900" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="container section tight">
+  <div class="section-head">
+    <h2 class="small">Связаться с нами</h2>
+    <p class="section-copy">Самый быстрый способ — написать напрямую в Telegram или Instagram. Ответ приходит в том же чате.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <span class="tag">TELEGRAM</span>
+      <h3 style="font-size:20px">Написать в Telegram</h3>
+      <p>Опишите задачу в двух словах — обсудим формат и следующий шаг.</p>
+      <div style="margin-top:16px">
+        <a class="btn cta-orange" href="https://t.me/soulofhouse_design" target="_blank" rel="noopener">Написать в Telegram →</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="tag">INSTAGRAM</span>
+      <h3 style="font-size:20px">Instagram</h3>
+      <p>Примеры работ, закулисье проектов и короткие советы по интерьеру.</p>
+      <div style="margin-top:16px">
+        <a class="btn cta-orange" href="https://instagram.com/soulofhouse_design" target="_blank" rel="noopener">Открыть Instagram →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container section tight" id="request-form">
+  <div class="section-head" style="justify-content:center;text-align:center">
+    <div style="max-width:520px;margin:0 auto">
+      <h2 class="small">Оставить заявку</h2>
+      <p class="section-copy" style="margin:10px auto 0">Оставьте имя и телефон или email — свяжемся сами и подберём формат под вашу задачу.</p>
+    </div>
+  </div>
+  <div class="request-form-row">
+    <div class="crm-form-card" id="crmFormCard">
+      <form id="leadForm" novalidate>
+        <div class="crm-form-field-wrap">
+          <input class="crm-input" type="text" id="leadName" name="name" placeholder="Имя" autocomplete="name" required>
+        </div>
+        <div class="crm-form-field-wrap">
+          <input class="crm-input" type="text" id="leadContact" name="contact" placeholder="Телефон или email" autocomplete="tel" required>
+        </div>
+        <div class="crm-form-field-wrap">
+          <textarea class="crm-input" id="leadMessage" name="message" placeholder="Коротко о задаче (необязательно)" rows="3" style="resize:vertical;font-family:inherit"></textarea>
+        </div>
+        <!-- honeypot: скрытое поле-ловушка от ботов -->
+        <div class="crm-hp" aria-hidden="true"><input type="text" id="leadCompany" name="company" tabindex="-1" autocomplete="off"></div>
+        <button class="crm-input crm-form-btn" type="submit" id="leadSubmit">Отправить заявку</button>
+        <p class="crm-form-note" id="leadStatus">Нажмите «Отправить заявку» — откроется письмо с вашими данными, отправленное на нашу почту.</p>
+      </form>
+    </div>
+    <img class="request-mascot" src="assets/neurocat.png" alt="Soul of House — нейрокот, маскот студии" width="900" height="900" loading="lazy">
+  </div>
+</section>
+
+<section class="container cta">
+  <h2>Не знаете, с чего начать?</h2>
+  <p>Пройдите короткую диагностику — 5 вопросов подскажут, какой стиль вам ближе и какой формат работы выбрать.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+    <a class="btn cta-orange" href="quiz.html">Пройти диагностику →</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Soul of House</span>
+    <div class="foot-links">
+      <a href="index.html">Главная</a>
+      <a href="pricing.html">Услуги</a>
+      <a href="quiz.html">Диагностика</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="blog/index.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const h=document.documentElement.scrollHeight-innerHeight;
+ document.getElementById('scrollProgress').style.width=(h>0?scrollY/h*100:0)+'%';
+});
+</script>
+
+<script>
+(function(){
+  // У Soul of House пока нет CRM/вебхука — заявка формируется как письмо
+  // на почту студии через mailto:, без передачи данных на сторонний сервер.
+  // Когда появится реальная CRM, эту форму можно перевести на прокси
+  // по образцу DzenStaff (Cloudflare Worker + скрытый токен).
+  var CONTACT_EMAIL = 'hello@soulofhouse.ru';
+  var form = document.getElementById('leadForm');
+  var status = document.getElementById('leadStatus');
+  var submitBtn = document.getElementById('leadSubmit');
+  var defaultNote = status.textContent;
+
+  function setStatus(text, kind){
+    status.textContent = text;
+    status.className = 'crm-form-note' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // honeypot: если скрытое поле заполнено — это бот, тихо игнорируем
+    if (document.getElementById('leadCompany').value) {
+      form.reset();
+      return;
+    }
+
+    var name = document.getElementById('leadName').value.trim();
+    var contact = document.getElementById('leadContact').value.trim();
+    var message = document.getElementById('leadMessage').value.trim();
+
+    if (!name || !contact) {
+      setStatus('Заполните имя и телефон или email.', 'crm-form-error');
+      return;
+    }
+
+    var subject = 'Заявка с сайта Soul of House';
+    var body = 'Имя: ' + name + '\nКонтакт: ' + contact + (message ? '\n\nСообщение:\n' + message : '');
+    var mailto = 'mailto:' + encodeURIComponent(CONTACT_EMAIL) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+    setStatus('Открываем ваш почтовый клиент с готовым письмом — просто нажмите «Отправить». Если письмо не открылось, напишите нам в Telegram выше.', 'crm-form-success');
+    try { if (typeof window.ym === 'function' && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID, 'reachGoal', 'contact_form_submit'); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

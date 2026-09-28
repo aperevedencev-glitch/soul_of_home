@@ -1,0 +1,13 @@
+[Unit]
+Description=Soul of Home Telegram bot (Нейрокот)
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/soulhome-bot
+ExecStart=/opt/soulhome-bot/venv/bin/python bot.py
+Restart=always
+RestartSec=5
+User=soulhome
+
+[Install]
+WantedBy=multi-user.target

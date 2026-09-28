@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aperevedencev-glitch.github.io/soul-of-house-site/sitemap.xml

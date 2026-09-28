@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Диагностика стиля — какой интерьер вам подходит — Soul of House</title>
+<meta name="description" content="5 вопросов — узнайте, какой стиль интерьера вам подходит: минимализм, скандинавский уют, тёплая эклектика или современная классика.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B2118'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23E8905A' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Диагностика стиля интерьера — Soul of House">
+<meta property="og:description" content="5 вопросов — узнайте, какой стиль интерьера вам подходит.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Soul of House">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress"><i id="scrollProgress"></i></div>
+
+<header class="container nav">
+  <a href="index.html" class="logo">Soul of House</a>
+  <nav class="site-nav">
+    <a href="index.html">Главная</a>
+    <a href="pricing.html">Услуги</a>
+    <a href="quiz.html" class="active">Диагностика стиля</a>
+    <a href="checklist.html">Чек-лист</a>
+    <a href="blog/index.html">Блог</a>
+    <a href="contact.html">Контакты</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="contact.html" class="badge">Оставить заявку</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero compact">
+  <div class="hero-grid quiz-hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Диагностика стиля</div>
+      <h1 style="font-size:clamp(32px,5vw,50px)">Какой интерьер — это вы</h1>
+      <p class="lead">5 вопросов о том, как вы живёте в пространстве. В конце — стиль, который вам, скорее всего, подойдёт, и с чего стоит начать: консультация, подбор или полный проект.</p>
+    </div>
+    <div class="hero-media quiz-hero-media">
+      <img src="assets/neurocat.png" alt="Soul of House — нейрокот, маскот студии" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<section class="container section tight" style="max-width:720px;margin:0 auto">
+  <div class="quiz" id="quiz">
+    <div class="quiz-top">
+      <span class="small" id="quizStep" style="color:#cbbfae">Вопрос 1 из 5</span>
+    </div>
+    <div class="quiz-progress"><i id="quizFill"></i></div>
+    <div class="question" id="quizQuestion"></div>
+    <div class="options" id="quizOptions"></div>
+
+    <div class="result" id="quizResult">
+      <span class="tag" id="resultTag">ВАШ СТИЛЬ</span>
+      <div class="result-title" id="resultTitle" style="color:#fff"></div>
+      <p id="resultLead" style="color:#cbbfae"></p>
+      <div class="result-card">
+        <p id="resultDesc"></p>
+        <p id="resultNext" style="font-weight:600;color:var(--ink)"></p>
+      </div>
+      <div class="result-actions">
+        <a class="btn cta-orange" id="resultCta" href="contact.html">Оставить заявку →</a>
+        <a class="btn secondary" href="pricing.html" style="background:#fff">Смотреть услуги</a>
+        <button class="btn secondary" id="quizRestart" style="background:#fff">Пройти заново</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Soul of House</span>
+    <div class="foot-links">
+      <a href="index.html">Главная</a>
+      <a href="pricing.html">Услуги</a>
+      <a href="quiz.html">Диагностика</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="blog/index.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const h=document.documentElement.scrollHeight-innerHeight;
+ document.getElementById('scrollProgress').style.width=(h>0?scrollY/h*100:0)+'%';
+});
+</script>
+
+<script>
+(function(){
+  var QUESTIONS = [
+    {
+      q: 'Что для вас важнее в интерьере?',
+      options: [
+        { t: 'Чистые линии и минимум лишнего', s: { minimal: 2 } },
+        { t: 'Тепло, дерево, живая текстура', s: { scandi: 2 } },
+        { t: 'Характер — вещи с историей, смешение эпох', s: { eclectic: 2 } },
+        { t: 'Симметрия, качественные материалы, сдержанная роскошь', s: { classic: 2 } }
+      ]
+    },
+    {
+      q: 'Как вы относитесь к цвету в интерьере?',
+      options: [
+        { t: 'Нейтральная база — белый, серый, бежевый', s: { minimal: 2, classic: 1 } },
+        { t: 'Тёплые натуральные оттенки', s: { scandi: 2 } },
+        { t: 'Не боюсь смелых сочетаний и акцентов', s: { eclectic: 2 } },
+        { t: 'Благородные тона — глубокий синий, изумрудный, бордо', s: { classic: 2 } }
+      ]
+    },
+    {
+      q: 'Какая мебель вам ближе?',
+      options: [
+        { t: 'Функциональная, без декоративных деталей', s: { minimal: 2 } },
+        { t: 'Простые формы, натуральные материалы', s: { scandi: 2 } },
+        { t: 'Винтаж вперемешку с современными вещами', s: { eclectic: 2 } },
+        { t: 'Классические силуэты, дорогая отделка', s: { classic: 2 } }
+      ]
+    },
+    {
+      q: 'Что вы чаще коллекционируете или собираете дома?',
+      options: [
+        { t: 'Ничего — предпочитаю пустое пространство', s: { minimal: 2 } },
+        { t: 'Растения, текстиль, уютные мелочи', s: { scandi: 2 } },
+        { t: 'Книги, арт, предметы из путешествий', s: { eclectic: 2 } },
+        { t: 'Предметы искусства, антиквариат', s: { classic: 2 } }
+      ]
+    },
+    {
+      q: 'На какой стадии сейчас ваш проект?',
+      options: [
+        { t: 'Только присматриваюсь, ремонта пока нет', s: { minimal: 1, scandi: 1 } },
+        { t: 'Есть черновая отделка, нужна концепция целиком', s: { classic: 1, eclectic: 1 } },
+        { t: 'Ремонт готов, нужен подбор мебели и декора', s: { scandi: 1, minimal: 1 } },
+        { t: 'Хочу точечно посоветоваться по одному вопросу', s: { eclectic: 1, classic: 1 } }
+      ]
+    }
+  ];
+
+  var STYLES = {
+    minimal: {
+      tag: 'МИНИМАЛИЗМ',
+      title: 'Минимализм',
+      lead: 'Пространство работает на вас, а не наоборот',
+      desc: 'Вам ближе чистые линии, нейтральная палитра и функциональность без лишнего декора. Каждая вещь в доме имеет своё место и назначение — и это ощущается как воздух.',
+      next: 'Судя по ответам, вам может хватить консультации или подбора мебели под уже готовую отделку — без полного проекта.'
+    },
+    scandi: {
+      tag: 'СКАНДИНАВСКИЙ УЮТ',
+      title: 'Скандинавский уют',
+      lead: 'Тепло, свет и натуральные материалы',
+      desc: 'Вам важны дерево, текстиль и ощущение уюта — интерьер должен согревать, а не впечатлять. Светлая база с тёплыми акцентами — то, что подойдёт вашему пространству.',
+      next: 'Хорошая отправная точка — подбор мебели и декора или консультация по зонированию света и текстур.'
+    },
+    eclectic: {
+      tag: 'ТЁПЛАЯ ЭКЛЕКТИКА',
+      title: 'Тёплая эклектика',
+      lead: 'Дом с характером и историей',
+      desc: 'Вы цените вещи со смыслом — винтаж рядом с современным дизайном, смелые сочетания цвета и фактуры. Такой интерьер получается штучным, и обычно ему нужна полноценная концепция.',
+      next: 'Чтобы всё это собралось в единую картину, а не в хаос, обычно нужен полный дизайн-проект с продуманной концепцией.'
+    },
+    classic: {
+      tag: 'СОВРЕМЕННАЯ КЛАССИКА',
+      title: 'Современная классика',
+      lead: 'Сдержанная роскошь и качество деталей',
+      desc: 'Симметрия, благородные материалы и внимание к деталям — вам важно, чтобы интерьер выглядел дорого без вычурности. Такой результат требует точной проработки на старте.',
+      next: 'Для этого стиля лучше всего подходит полный дизайн-проект — с планировкой, визуализацией и авторским надзором.'
+    }
+  };
+
+  var current = 0;
+  var scores = { minimal: 0, scandi: 0, eclectic: 0, classic: 0 };
+
+  var stepLabel = document.getElementById('quizStep');
+  var fill = document.getElementById('quizFill');
+  var qEl = document.getElementById('quizQuestion');
+  var optsEl = document.getElementById('quizOptions');
+  var resultEl = document.getElementById('quizResult');
+  var quizBody = [stepLabel.parentElement, document.getElementById('quizFill').parentElement, qEl, optsEl];
+
+  function renderQuestion(){
+    var q = QUESTIONS[current];
+    stepLabel.textContent = 'Вопрос ' + (current + 1) + ' из ' + QUESTIONS.length;
+    fill.style.width = Math.round((current / QUESTIONS.length) * 100) + '%';
+    qEl.textContent = q.q;
+    optsEl.innerHTML = '';
+    q.options.forEach(function(opt, i){
+      var btn = document.createElement('button');
+      btn.className = 'option';
+      btn.type = 'button';
+      var letter = document.createElement('span');
+      letter.className = 'letter';
+      letter.textContent = String.fromCharCode(65 + i);
+      var txt = document.createElement('span');
+      txt.textContent = opt.t;
+      btn.appendChild(letter);
+      btn.appendChild(txt);
+      btn.addEventListener('click', function(){ answer(opt); });
+      optsEl.appendChild(btn);
+    });
+  }
+
+  function answer(opt){
+    Object.keys(opt.s).forEach(function(key){ scores[key] = (scores[key] || 0) + opt.s[key]; });
+    current++;
+    if (current < QUESTIONS.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult(){
+    fill.style.width = '100%';
+    quizBody.forEach(function(el){ el.style.display = 'none'; });
+
+    var topKey = Object.keys(scores).reduce(function(a, b){ return scores[a] >= scores[b] ? a : b; });
+    var style = STYLES[topKey];
+
+    document.getElementById('resultTag').textContent = style.tag;
+    document.getElementById('resultTitle').textContent = style.title + ' — ' + style.lead;
+    document.getElementById('resultLead').textContent = '';
+    document.getElementById('resultDesc').textContent = style.desc;
+    document.getElementById('resultNext').textContent = style.next;
+
+    resultEl.classList.add('show');
+
+    try {
+      if (typeof window.ym === 'function' && window.YM_COUNTER_ID) {
+        window.ym(window.YM_COUNTER_ID, 'reachGoal', 'quiz_completed_' + topKey);
+      }
+    } catch (e) {}
+  }
+
+  document.getElementById('quizRestart').addEventListener('click', function(){
+    current = 0;
+    scores = { minimal: 0, scandi: 0, eclectic: 0, classic: 0 };
+    resultEl.classList.remove('show');
+    quizBody.forEach(function(el){ el.style.display = ''; });
+    renderQuestion();
+  });
+
+  renderQuestion();
+})();
+</script>
+</body>
+</html>
