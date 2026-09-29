@@ -1,0 +1,9 @@
+{
+  "name": "soul-of-home",
+  "private": true,
+  "description": "Сайт мастерской Soul of Home: статические страницы и функция чата api/chat.js для Vercel",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.129.0"
+  }
+}

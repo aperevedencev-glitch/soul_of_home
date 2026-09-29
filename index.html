@@ -3,10 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soul of Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Soul of Home — мастерская и школа ручной работы</title>
+<meta name="description" content="Авторские новогодние шары из бархата, кружева и жемчуга, курсы по ёлочным игрушкам и дизайну уютного дома, бесплатные уроки и ИИ-помощник Нейрокот.">
+<meta name="theme-color" content="#0E1C16">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Soul of Home">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Soul of Home — мастерская и школа ручной работы">
+<meta property="og:description" content="Авторские новогодние шары из бархата, кружева и жемчуга, курсы по ёлочным игрушкам и дизайну уютного дома, бесплатные уроки и ИИ-помощник Нейрокот.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/manrope-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Soul of Home", "description": "Мастерская и школа ручной работы: авторские новогодние шары и курсы по уюту в доме.", "logo": "favicon.svg", "sameAs": ["https://t.me/SoulHomeRuBot"]}</script>
 </head>
 <body>
 <header class="site">
@@ -161,12 +174,23 @@
         <p>Всё началось с одного бархатного шара, сделанного к Новому году для своей ёлки. Сейчас это коллекция авторских игрушек, каждая из которых собирается вручную: обтяжка тканью, объёмная вышивка, жемчуг, кружево и стразы.</p>
         <p>Параллельно выросла школа. В ней я делюсь техниками, которые отработала на своих изделиях, и тем, что узнала о дизайне пространства: как подобрать палитру, поставить свет и сочетать текстиль, чтобы дом ощущался своим.</p>
       </div>
+      <div class="author-card" data-soh="author" hidden></div>
       <div class="cta-row about-cta">
         <a class="btn-dark" href="obuchenie.html">Посмотреть программы</a>
         <a class="link-inline" href="uroki.html">Начать с бесплатного урока</a>
       </div>
     </div>
-    <div class="hero-art"><div class="arch light"><img src="img/cozy-cat.jpg" alt="Девушка в вязаном свитере обнимает пушистого кота в тёплом домашнем свете" loading="lazy"></div></div>
+    <div class="hero-art"><div class="arch light"><img src="img/cozy-cat.webp" alt="Девушка в вязаном свитере обнимает пушистого кота в тёплом домашнем свете" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section id="reviews" class="band" data-soh="reviews" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Отзывы</p>
+      <h2>Что говорят ученицы и покупательницы</h2>
+    </div>
+    <div class="reviews-grid"></div>
   </div>
 </section>
 
@@ -194,12 +218,14 @@
         <p>Мастерская и школа ручной работы для уютного дома</p>
       </div>
       <nav class="foot-links" aria-label="Разделы сайта">
-        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a>
+        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a><a href="privacy.html">Конфиденциальность</a>
       </nav>
     </div>
     <p class="foot-note">© 2026 Soul of Home · Все изделия и фотографии — авторская ручная работа</p>
+    <p class="foot-note foot-legal" data-soh="legal" hidden></p>
   </div>
 </footer>
+<script src="content.js" charset="utf-8"></script>
 <script src="site.js" charset="utf-8"></script>
 
 </body>

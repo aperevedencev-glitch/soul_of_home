@@ -43,26 +43,74 @@
     });
   };
 
-  // ----- форма записи: выбор курса → Telegram-бот -----
+  // ----- форма записи: заявка в базу, дальше по желанию в Telegram -----
+  var SUPABASE_URL = 'https://wuvadreohiphwevprwmk.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_QnCBQILrqr6PhrAE8521NA_edLJSMA-';
   var form = document.getElementById('applyForm');
   if(form){
     var success = document.getElementById('successState');
     var intro = document.getElementById('formIntro');
-    function checkRadio(){
-      var wrap = form.querySelector('[data-field="course"]');
-      var ok = !!form.querySelector('input[name="course"]:checked');
-      wrap.classList.toggle('has-error', !ok); return ok;
+    var msg = document.getElementById('formMsg');
+    var msgDefault = msg.textContent;
+    var submitBtn = form.querySelector('.submit');
+    function mark(field, ok){ var w = form.querySelector('[data-field="' + field + '"]'); w.classList.toggle(field === 'consent' ? 'err' : 'has-error', !ok); return ok; }
+    function check(){
+      var ok = mark('course', !!form.querySelector('input[name="course"]:checked'));
+      ok = mark('name', form.name.value.trim().length > 0) && ok;
+      ok = mark('contact', form.contact.value.trim().length >= 3) && ok;
+      ok = mark('consent', form.consent.checked) && ok;
+      return ok;
     }
-    form.addEventListener('change', checkRadio);
+    form.addEventListener('change', function(){ if(form.dataset.tried) check(); });
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      if(!checkRadio()) return;
+      form.dataset.tried = '1';
+      if(!check()){ var bad = form.querySelector('.has-error input, .err input'); if(bad) bad.focus(); return; }
       var r = form.querySelector('input[name="course"]:checked');
-      document.getElementById('successCourse').textContent = r.value;
-      document.getElementById('successTg').href = 'https://t.me/SoulHomeRuBot?start=' + r.dataset.tg;
-      form.hidden = true; intro.hidden = true; success.hidden = false;
+      var row = { course: r.value, name: form.name.value.trim(), contact: form.contact.value.trim(),
+        message: form.message.value.trim() || null, source: location.pathname.slice(0, 60), consent: true };
+      submitBtn.disabled = true; submitBtn.textContent = 'Отправляю…'; msg.textContent = msgDefault; msg.classList.remove('bad');
+      fetch(SUPABASE_URL + '/rest/v1/soul_home_leads', { method: 'POST',
+        headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify(row) })
+      .then(function(res){ if(!res.ok) throw new Error(res.status); })
+      .then(function(){
+        document.getElementById('successCourse').textContent = r.value;
+        document.getElementById('successTg').href = 'https://t.me/SoulHomeRuBot?start=' + r.dataset.tg;
+        form.hidden = true; intro.hidden = true; success.hidden = false;
+      }, function(){
+        msg.classList.add('bad');
+        msg.innerHTML = 'Не получилось отправить. Попробуйте ещё раз или напишите в <a href="https://t.me/SoulHomeRuBot?start=' + r.dataset.tg + '" target="_blank" rel="noopener">Telegram</a>.';
+      })
+      .then(function(){ submitBtn.disabled = false; submitBtn.textContent = 'Отправить заявку'; });
     });
   }
+
+  // ----- данные из content.js: автор, цены, отзывы, реквизиты -----
+  var C = window.SOH_CONTENT || {};
+  function esc(t){ var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; }
+  function show(sel){ var el = document.querySelector('[data-soh="' + sel + '"]'); if(el) el.hidden = false; return el; }
+  var a = C.author || {};
+  if(a.name){
+    var ac = show('author');
+    if(ac) ac.innerHTML = (a.photo ? '<img src="' + esc(a.photo) + '" alt="' + esc(a.name) + '" width="72" height="72" loading="lazy">' : '') +
+      '<div><b>' + esc(a.name) + '</b>' + (a.role ? '<span>' + esc(a.role) + '</span>' : '') + (a.since ? '<p>' + esc(a.since) + '</p>' : '') + '</div>';
+  }
+  var P = C.prices || {};
+  document.querySelectorAll('[data-price]').forEach(function(el){ var v = P[el.dataset.price]; if(v){ el.textContent = v; el.hidden = false; } });
+  var R = (C.reviews || []).filter(function(x){ return x && x.text; });
+  if(R.length){
+    var rs = show('reviews');
+    if(rs) rs.querySelector('.reviews-grid').innerHTML = R.map(function(x){
+      return '<figure class="review">' + (x.photo ? '<img src="' + esc(x.photo) + '" alt="Работа: ' + esc(x.name) + '" loading="lazy">' : '') +
+        '<blockquote>' + esc(x.text) + '</blockquote><figcaption><b>' + esc(x.name) + '</b>' + (x.course ? ' · ' + esc(x.course) : '') + '</figcaption></figure>';
+    }).join('');
+  }
+  var L = C.legal || {};
+  if(L.operator){
+    var parts = [L.operator, L.inn && 'ИНН ' + L.inn, L.ogrnip && 'ОГРНИП ' + L.ogrnip, L.email].filter(Boolean);
+    var fl = show('legal'); if(fl) fl.textContent = parts.join(' · ');
+  }
+  document.querySelectorAll('[data-legal]').forEach(function(el){ var v = L[el.dataset.legal]; if(v) el.textContent = v; });
 })();
 
 // ===== Нейрокот: ИИ-помощник Soul of Home =====
@@ -89,9 +137,32 @@
   var sample = null, sampleChecked = false, disabled = false;
   var turns = [], ctl = null, busy = false, panel, log, input, sendBtn, sugs, fab;
 
+  // На сайте (Vercel) ответы идут через /api/chat: промпт и ключ API хранятся на сервере.
+  // Интерфейс повторяет window.claude sample, чтобы код чата был общим.
+  function serverSample(messages, opts){
+    return fetch('api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: messages }), signal: opts.signal })
+    .then(function(res){
+      if(!res.ok || !res.body){
+        var code = res.status === 429 ? 'rate_limited' : (res.status === 404 || res.status === 503) ? 'chat_off' : 'server_error';
+        throw { code: code };
+      }
+      var reader = res.body.getReader(), dec = new TextDecoder(), text = '';
+      function pump(){
+        return reader.read().then(function(r){
+          if(r.done){ if(!text) throw { code: 'server_error' }; return { text: text }; }
+          text += dec.decode(r.value, { stream: true }); opts.onText({ text: text }); return pump();
+        });
+      }
+      return pump();
+    })
+    .catch(function(e){ if(e && e.name === 'AbortError') throw { code: 'cancelled' }; throw e && e.code ? e : { code: 'server_error' }; });
+  }
+  serverSample.server = true;
+
   function getSample(){
     if(sampleChecked) return Promise.resolve(sample);
-    if(!window.claude || !window.claude.use){ sampleChecked = true; return Promise.resolve(null); }
+    if(!window.claude || !window.claude.use){ sample = serverSample; sampleChecked = true; return Promise.resolve(sample); }
     return window.claude.use('sample').then(function(s){ sample = s; sampleChecked = true; return s; }, function(){ sampleChecked = true; return null; });
   }
 
@@ -106,7 +177,7 @@
   function build(){
     panel = el('div', 'nc-panel'); panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Чат с Нейрокотом'); panel.hidden = true;
     panel.innerHTML =
-      '<div class="nc-head"><img src="img/neurocat-face.jpg" alt=""><div><div class="nc-title">Нейрокот</div><div class="nc-status"><span class="dot"></span>ИИ-помощник Soul of Home</div></div>' +
+      '<div class="nc-head"><img src="img/neurocat-face.webp" alt=""><div><div class="nc-title">Нейрокот</div><div class="nc-status"><span class="dot"></span>ИИ-помощник Soul of Home</div></div>' +
       '<button class="nc-x" type="button" aria-label="Закрыть чат"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>' +
       '<div class="nc-log" aria-live="polite"></div><div class="nc-sugs"></div>' +
       '<form class="nc-form"><label for="ncInput" class="sr-only" style="position:absolute;left:-9999px;">Ваш вопрос</label><textarea id="ncInput" rows="1" placeholder="Спросите про уют, шары или курсы…"></textarea><button class="nc-send" type="submit" aria-label="Отправить">' + CAT_SVG_SEND + '</button></form>' +
@@ -122,7 +193,7 @@
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !panel.hidden) close(); });
 
     fab = el('button', 'nc-fab'); fab.type = 'button'; fab.setAttribute('aria-label', 'Открыть чат с Нейрокотом');
-    fab.innerHTML = '<img src="img/neurocat-face.jpg" alt=""><span>Спросить Нейрокота</span>';
+    fab.innerHTML = '<img src="img/neurocat-face.webp" alt=""><span>Спросить Нейрокота</span>';
     fab.addEventListener('click', open);
     document.body.appendChild(fab);
   }
@@ -146,7 +217,7 @@
       if(turns.length > 12) turns = turns.slice(-12);
       while(turns.length && turns[0].role !== 'user') turns.shift();
       ctl = new AbortController();
-      return s([{ role: 'user', content: RULES }].concat(turns), {
+      return s(s.server ? turns.slice() : [{ role: 'user', content: RULES }].concat(turns), {
         cache: false, modelTier: 'quick', signal: ctl.signal,
         onText: function(u){ bubble.classList.remove('wait'); bubble.textContent = u.text; log.scrollTop = log.scrollHeight; }
       }).then(function(r){
@@ -156,7 +227,8 @@
         if(e && e.text){ bubble.classList.remove('wait'); bubble.textContent = e.text; } else bubble.remove();
         turns.pop();
         if(code === 'cancelled') return;
-        if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(code) !== -1){ disabled = true; noteTelegram('Без разрешения на ИИ я не смогу ответить здесь, но с радостью отвечу в Telegram.'); }
+        if(code === 'chat_off'){ disabled = true; noteTelegram('Здесь я пока не могу ответить, но с радостью отвечу в Telegram.'); }
+        else if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(code) !== -1){ disabled = true; noteTelegram('Без разрешения на ИИ я не смогу ответить здесь, но с радостью отвечу в Telegram.'); }
         else if(code === 'rate_limited') add('note', 'Слишком много вопросов подряд. Передохнём минутку и попробуем снова.');
         else if(code === 'session_expired') add('note', 'Нужно заново войти в аккаунт Claude, чтобы продолжить.');
         else if(code === 'refused') add('note', 'На этот вопрос я не отвечу. Давайте поговорим про уют, шары или курсы?');

@@ -396,3 +396,39 @@ footer.site{padding:48px 0 36px;font-size:13px;color:var(--muted);border-top:1px
 .arch img.pos-red{object-position:50% 50%;}
 .lesson-figure{margin:0;max-width:760px;}
 .lesson-figure img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);}
+
+/* ---------- ДАННЫЕ ИЗ content.js ---------- */
+[hidden]{display:none!important;}
+.pill.price{background:var(--gold);color:var(--pine-deep);border-color:var(--gold);}
+.author-card{display:flex;gap:16px;align-items:center;margin-top:24px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-radius:8px;max-width:520px;}
+.author-card img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.author-card b{display:block;font-family:'Fraunces',Georgia,serif;font-size:17px;font-weight:500;}
+.author-card span{display:block;font-size:13px;color:var(--muted);}
+.author-card p{font-size:13.5px;color:var(--text-body);margin-top:4px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.review{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;}
+.review img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;}
+.review blockquote{margin:0;font-size:14.5px;line-height:1.6;color:var(--text-body);}
+.review figcaption{font-size:13px;color:var(--muted);margin-top:auto;}
+.review figcaption b{color:var(--pine-deep);}
+.consent a{color:inherit;}
+.fine-print.bad{color:var(--berry);font-size:12.5px;}
+.fine-print.bad a{color:inherit;font-weight:700;}
+button.submit:disabled{opacity:.7;cursor:progress;}
+.foot-legal{margin-top:6px;}
+
+/* ---------- ТЕКСТОВЫЕ СТРАНИЦЫ ---------- */
+.doc{max-width:760px;}
+.doc h1{font-size:34px;line-height:1.2;margin-bottom:12px;}
+.doc h2{font-size:21px;margin:32px 0 10px;}
+.doc p,.doc li{font-size:15px;color:var(--text-body);line-height:1.7;}
+.doc p + p{margin-top:10px;}
+.doc ul{padding-left:20px;margin:8px 0;}
+.doc .muted{color:var(--muted);font-size:13.5px;}
+
+/* на телефоне кнопка чата не должна закрывать последние строки страницы */
+@media (max-width:520px){
+  body{padding-bottom:64px;}
+  .nc-fab img{width:36px;height:36px;}
+  .nc-fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));opacity:.94;}
+}

@@ -4,9 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Обучение · Soul of Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Шесть программ: бархатный шар для начинающих, вышивка и жемчуг, авторская коллекция, дизайн уютного дома, праздничный интерьер и разбор «От хобби к делу».">
+<meta name="theme-color" content="#0E1C16">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Soul of Home">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Обучение · Soul of Home">
+<meta property="og:description" content="Шесть программ: бархатный шар для начинающих, вышивка и жемчуг, авторская коллекция, дизайн уютного дома, праздничный интерьер и разбор «От хобби к делу».">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/manrope-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Course", "name": "Бархатный шар", "description": "Базовая техника, на которой построена половина коллекции.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Course", "name": "Вышивка, жемчуг и кружево", "description": "Декор, который превращает шар в дизайн-объект.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Course", "name": "Своя авторская коллекция", "description": "Как придумать серию шаров с единым характером.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "Course", "name": "Дизайн уютного дома", "description": "Основы, которые меняют ощущение от квартиры без ремонта.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}, {"@type": "ListItem", "position": 5, "item": {"@type": "Course", "name": "Праздничный интерьер", "description": "Ёлка, стол и дом к Новому году в одном стиле.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}, {"@type": "ListItem", "position": 6, "item": {"@type": "Course", "name": "От хобби к делу", "description": "Для тех, кто уже делает изделия и хочет их продавать.", "inLanguage": "ru", "provider": {"@type": "Organization", "name": "Soul of Home"}}}]}</script>
 </head>
 <body>
 <header class="site">
@@ -38,7 +51,7 @@
     </div>
     </div>
     <figure class="hero-photo">
-      <img src="img/webinar-cat.jpg" alt="Кот в наушниках ведёт вебинар «Как создать дом с душой?» за ноутбуком" width="1536" height="1024">
+      <img src="img/webinar-cat.webp" alt="Кот в наушниках ведёт вебинар «Как создать дом с душой?» за ноутбуком" width="1536" height="1024">
       <figcaption>Вебинар «Как создать дом с душой?» — о том, как атмосфера дома влияет на настроение</figcaption>
     </figure>
   </div>
@@ -56,21 +69,21 @@
       <h3 class="course-group-title">Ёлочные игрушки ручной работы</h3>
       <div class="modules">
         <div class="module course" id="course-velvet">
-          <span class="course-meta"><span class="pill">Для начинающих</span><span class="pill pine">3 урока</span></span>
+          <span class="course-meta"><span class="pill price" data-price="velvet" hidden></span><span class="pill">Для начинающих</span><span class="pill pine">3 урока</span></span>
           <h3>Бархатный шар</h3>
           <p>Базовая техника, на которой построена половина коллекции.</p>
           <ul><li>Подготовка основы 8 см и раскрой бархата</li><li>Обтяжка без морщин и видимых швов</li><li>Бант, кисточка, подвес и фурнитура</li></ul>
           <a class="more" href="https://t.me/SoulHomeRuBot?start=velvet" target="_blank" rel="noopener">Записаться в Telegram <span>→</span></a>
         </div>
         <div class="module course" id="course-embroidery">
-          <span class="course-meta"><span class="pill">Средний уровень</span><span class="pill pine">5 уроков</span></span>
+          <span class="course-meta"><span class="pill price" data-price="embroidery" hidden></span><span class="pill">Средний уровень</span><span class="pill pine">5 уроков</span></span>
           <h3>Вышивка, жемчуг и кружево</h3>
           <p>Декор, который превращает шар в дизайн-объект.</p>
           <ul><li>Объёмная вышивка металлизированной нитью</li><li>Жемчуг, стразы и кристаллы: крепление и композиция</li><li>Камея, кружево и объёмные цветы из ткани</li></ul>
           <a class="more" href="https://t.me/SoulHomeRuBot?start=embroidery" target="_blank" rel="noopener">Записаться в Telegram <span>→</span></a>
         </div>
         <div class="module course" id="course-collection">
-          <span class="course-meta"><span class="pill">Продвинутый</span><span class="pill pine">4 урока</span></span>
+          <span class="course-meta"><span class="pill price" data-price="collection" hidden></span><span class="pill">Продвинутый</span><span class="pill pine">4 урока</span></span>
           <h3>Своя авторская коллекция</h3>
           <p>Как придумать серию шаров с единым характером.</p>
           <ul><li>Концепция, название и история коллекции</li><li>Палитра и материалы для серии из 6–12 моделей</li><li>Фотосъёмка изделий при дневном свете</li></ul>
@@ -83,21 +96,21 @@
       <h3 class="course-group-title">Дизайн и уют</h3>
       <div class="modules">
         <div class="module course" id="course-home">
-          <span class="course-meta"><span class="pill">Для всех</span><span class="pill pine">6 уроков</span></span>
+          <span class="course-meta"><span class="pill price" data-price="home" hidden></span><span class="pill">Для всех</span><span class="pill pine">6 уроков</span></span>
           <h3>Дизайн уютного дома</h3>
           <p>Основы, которые меняют ощущение от квартиры без ремонта.</p>
           <ul><li>Палитра 60/30/10 для своей комнаты</li><li>Сценарии света и тёплая температура ламп</li><li>Текстиль, фактуры и композиция на полках</li></ul>
           <a class="more" href="https://t.me/SoulHomeRuBot?start=home" target="_blank" rel="noopener">Записаться в Telegram <span>→</span></a>
         </div>
         <div class="module course" id="course-holiday">
-          <span class="course-meta"><span class="pill">Для всех</span><span class="pill pine">4 урока</span></span>
+          <span class="course-meta"><span class="pill price" data-price="holiday" hidden></span><span class="pill">Для всех</span><span class="pill pine">4 урока</span></span>
           <h3>Праздничный интерьер</h3>
           <p>Ёлка, стол и дом к Новому году в одном стиле.</p>
           <ul><li>Ёлка как композиция: палитра, свет, порядок развески</li><li>Венок и декор входной двери</li><li>Сервировка праздничного стола</li></ul>
           <a class="more" href="https://t.me/SoulHomeRuBot?start=holiday" target="_blank" rel="noopener">Записаться в Telegram <span>→</span></a>
         </div>
         <div class="module course" id="course-business">
-          <span class="course-meta"><span class="pill">Для мастеров</span><span class="pill pine">Личный разбор, 45 мин</span></span>
+          <span class="course-meta"><span class="pill price" data-price="business" hidden></span><span class="pill">Для мастеров</span><span class="pill pine">Личный разбор, 45 мин</span></span>
           <h3>От хобби к делу</h3>
           <p>Для тех, кто уже делает изделия и хочет их продавать.</p>
           <ul><li>Формула цены: материалы, время и экспертность</li><li>Портфолио и карточка товара</li><li>Каналы продаж: ярмарки, опт, корпоративные подарки</li></ul>
@@ -111,7 +124,7 @@
 <section class="band" id="masters">
   <div class="wrap split">
     <figure class="poster">
-      <img src="img/master-vs-business.jpg" alt="Инфографика: талантливый мастер без системы продаж и мастер, который выстроил бизнес" loading="lazy" width="1254" height="1254">
+      <img src="img/master-vs-business.webp" alt="Инфографика: талантливый мастер без системы продаж и мастер, который выстроил бизнес" loading="lazy" width="1254" height="1254">
     </figure>
     <div>
       <p class="eyebrow">Для мастеров</p>
@@ -191,12 +204,22 @@
   </div>
 </section>
 
+<section id="reviews" class="band" data-soh="reviews" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Отзывы</p>
+      <h2>Что говорят ученицы и покупательницы</h2>
+    </div>
+    <div class="reviews-grid"></div>
+  </div>
+</section>
+
 <section id="apply" class="cta-section">
   <div class="wrap cta-grid">
     <div>
       <p class="eyebrow light">Запись на обучение</p>
       <h2>Оставьте заявку, и я помогу выбрать программу</h2>
-      <p class="lede">Заявки принимает Telegram-бот @SoulHomeRuBot: выберите программу здесь или на карточке курса, и бот передаст её мастеру. Ответ о стоимости и ближайших датах придёт в Telegram.</p>
+      <p class="lede">Выберите программу и оставьте контакт: мастер пришлёт стоимость и ближайшие даты. Если удобнее Telegram, после заявки можно продолжить в боте @SoulHomeRuBot.</p>
       <div class="criteria-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Опыт в рукоделии не обязателен</div>
       <div class="criteria-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Можно начать с бесплатных уроков и записаться позже</div>
       <div class="criteria-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Заявка ни к чему не обязывает</div>
@@ -205,7 +228,7 @@
     <div class="form-card">
       <div id="formIntro">
         <h3>Выберите программу</h3>
-        <p class="sub">Заявка уйдёт мастеру через Telegram-бота @SoulHomeRuBot.</p>
+        <p class="sub">Мастер ответит там, где вам удобно: по телефону, в мессенджере или на почту.</p>
       </div>
       <form id="applyForm" novalidate>
         <div class="field" data-field="course">
@@ -220,13 +243,28 @@
           </div>
           <span class="error-msg">Выберите программу или ту, что ближе всего</span>
         </div>
-        <button type="submit" class="submit">Продолжить в Telegram</button>
-        <p class="fine-print">Бот передаст заявку мастеру, ответ придёт в Telegram</p>
+        <div class="field" data-field="name">
+          <label for="fName">Как к вам обращаться</label>
+          <input type="text" id="fName" name="name" maxlength="80" autocomplete="name" required>
+          <span class="error-msg">Напишите имя</span>
+        </div>
+        <div class="field" data-field="contact">
+          <label for="fContact">Телефон, Telegram или почта</label>
+          <input type="text" id="fContact" name="contact" maxlength="120" autocomplete="tel" placeholder="+7 …, @username или почта" required>
+          <span class="error-msg">Оставьте контакт, чтобы мастер смогла ответить</span>
+        </div>
+        <div class="field">
+          <label for="fMsg">Вопрос или пожелание <span class="hint">— необязательно</span></label>
+          <textarea id="fMsg" name="message" maxlength="1000" rows="2"></textarea>
+        </div>
+        <label class="consent" data-field="consent"><input type="checkbox" name="consent" required> <span>Согласна(-ен) на обработку персональных данных по <a href="privacy.html" target="_blank">политике конфиденциальности</a></span></label>
+        <button type="submit" class="submit">Отправить заявку</button>
+        <p class="fine-print" id="formMsg" role="status">Мастер ответит по указанному контакту. Заявка ни к чему не обязывает</p>
       </form>
       <div class="success" id="successState" hidden>
-        <h3>Последний шаг</h3>
-        <p>Вы выбрали программу «<span id="successCourse"></span>». Нажмите кнопку, чтобы открыть бота @SoulHomeRuBot: он передаст заявку мастеру, и ответ придёт вам прямо в Telegram.</p>
-        <a class="btn-primary" id="successTg" href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Отправить заявку в Telegram</a>
+        <h3>Заявка отправлена</h3>
+        <p>Спасибо! Заявка на программу «<span id="successCourse"></span>» у мастера. Она свяжется с вами по указанному контакту и пришлёт стоимость и даты.</p>
+        <a class="btn-primary" id="successTg" href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Продолжить в Telegram</a>
         <a class="link-inline" href="uroki.html">А пока загляните в бесплатные уроки →</a>
       </div>
     </div>
@@ -242,12 +280,14 @@
         <p>Мастерская и школа ручной работы для уютного дома</p>
       </div>
       <nav class="foot-links" aria-label="Разделы сайта">
-        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a>
+        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a><a href="privacy.html">Конфиденциальность</a>
       </nav>
     </div>
     <p class="foot-note">© 2026 Soul of Home · Все изделия и фотографии — авторская ручная работа</p>
+    <p class="foot-note foot-legal" data-soh="legal" hidden></p>
   </div>
 </footer>
+<script src="content.js" charset="utf-8"></script>
 <script src="site.js" charset="utf-8"></script>
 
 </body>
