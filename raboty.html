@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мои работы · Soul of Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="nav-inner">
+    <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+    <nav class="nav-links" aria-label="Разделы сайта">
+      <a href="./">Главная</a>
+      <a href="raboty.html" aria-current="page">Мои работы</a>
+      <a href="obuchenie.html">Обучение</a>
+      <a href="uroki.html">Уроки</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="obuchenie.html#apply">Записаться</a>
+      <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="hero compact">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="crumbs"><a href="./">Главная</a> · Мои работы</p>
+      <p class="eyebrow light">Коллекция «Новогодние шары»</p>
+      <h1>Шары, которые превращают ёлку в <em>произведение искусства</em></h1>
+      <p class="lede">Двенадцать авторских моделей ручной работы: бархат, кружево, жемчуг и вышивка вместо фабричного пластика. Откройте карточку, чтобы увидеть шар крупно и прочитать состав, и отметьте сердцем те, что хочется видеть у себя дома.</p>
+      <div class="hero-stats">
+        <div class="stat"><b>12</b><span>моделей в коллекции</span></div>
+        <div class="stat"><b>100%</b><span>ручная работа</span></div>
+        <div class="stat"><b>8 см</b><span>диаметр каждого шара</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="arch"><img src="img/cameo.jpg" alt="Шар с камеей и кружевом"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="toolbar">
+      <div>
+        <div class="filters" id="filters" role="group" aria-label="Фильтр коллекции">
+          <button class="chip active" type="button" data-filter="all" aria-pressed="true">Все модели</button>
+          <button class="chip" type="button" data-filter="ivory" aria-pressed="false">Айвори и белый</button>
+          <button class="chip" type="button" data-filter="emerald" aria-pressed="false">Изумрудный</button>
+          <button class="chip" type="button" data-filter="red" aria-pressed="false">Красный</button>
+          <button class="chip" type="button" data-filter="velvet" aria-pressed="false">Бархат</button>
+          <button class="chip" type="button" data-filter="liked" aria-pressed="false">♥ Отмеченные</button>
+        </div>
+        <p class="count-line">Показано моделей: <b id="shownCount">12</b> из 12 · Отмечено: <b id="likedCount">0</b></p>
+      </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="theses" id="theses">
+      <div class="theses-head">
+        <h3>Коротко о коллекции</h3>
+        <button class="copy-btn" id="copyBtn" type="button">Скопировать тезисы</button>
+      </div>
+      <ul>
+        <li><span><b>12 моделей</b> — от кружевной камеи до бархата с вышивкой, каждая в своей коллекции</span></li>
+        <li><span><b>Материалы:</b> бархат, кружево, атлас, жемчуг, стразы, кристаллы, металлическая фурнитура</span></li>
+        <li><span><b>Ручная работа</b> — объёмные цветы, банты, кисточки и декор собраны вручную, повторов нет</span></li>
+        <li><span><b>Единый размер</b> — 8 см в диаметре, шары легко сочетаются между собой на одной ёлке</span></li>
+        <li><span><b>Палитра</b> — от айвори и жемчужного до изумрудного и глубокого красного</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap cta-grid">
+    <div>
+      <p class="eyebrow light">Что-то приглянулось?</p>
+      <h2>Закажите шар под свою ёлку или сделайте его сами</h2>
+      <p class="lede">В Telegram-канале — вся коллекция крупным планом, цены и заказ шара под конкретный цвет ёлки или интерьера. А если хочется научиться, техники этих шаров разбираем на курсах.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://t.me/SoulHomeRuBot?start=order" target="_blank" rel="noopener">Заказать шар в Telegram</a>
+        <a class="link-secondary" href="obuchenie.html">Научиться делать такие же →</a>
+      </div>
+    </div>
+    <div class="modules" style="grid-template-columns:1fr;">
+      <a class="module" href="https://t.me/SoulHomeRuBot?start=velvet" target="_blank" rel="noopener">
+        <span class="course-meta"><span class="pill">Для начинающих</span></span>
+        <h3>Курс «Бархатный шар»</h3>
+        <p>Изумрудные и красные бархатные шары из коллекции: обтяжка основы, бант, кисточка и фурнитура.</p>
+      </a>
+      <a class="module" href="https://t.me/SoulHomeRuBot?start=embroidery" target="_blank" rel="noopener">
+        <span class="course-meta"><span class="pill">Средний уровень</span></span>
+        <h3>Курс «Вышивка, жемчуг и кружево»</h3>
+        <p>Камея, объёмные цветы, балерина и винтажная золотая вышивка.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<dialog class="work-dialog" id="workDialog" aria-labelledby="dlgTitle">
+  <button class="dlg-close" type="button" id="dlgClose" aria-label="Закрыть"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+  <div class="dlg-grid">
+    <img id="dlgImg" src="" alt="">
+    <div class="dlg-body">
+      <div>
+        <p class="coll" id="dlgColl"></p>
+        <h2 id="dlgTitle"></h2>
+      </div>
+      <p class="desc" id="dlgDesc"></p>
+      <dl class="meta-grid" id="dlgMeta"></dl>
+      <div class="dlg-actions">
+        <button class="like-toggle" id="dlgLike" type="button" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7C19.5 15.9 12 20.5 12 20.5z" stroke="currentColor" stroke-width="1.7" fill="none"/></svg><span>Хочу такой на свою ёлку</span></button>
+        <div class="dlg-nav"><button type="button" id="dlgPrev" aria-label="Предыдущая работа">←</button><button type="button" id="dlgNext" aria-label="Следующая работа">→</button></div>
+      </div>
+    </div>
+  </div>
+</dialog>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+        <p>Мастерская и школа ручной работы для уютного дома</p>
+      </div>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </div>
+    <p class="foot-note">© 2026 Soul of Home · Все изделия и фотографии — авторская ручная работа</p>
+  </div>
+</footer>
+<script src="site.js" charset="utf-8"></script>
+
+<script>
+(function(){
+  var WORKS = [
+    {id:'cameo', tags:'ivory', name:'Шар с камеей и кружевом', coll:'Классическая элегантность', desc:'Кружевные узоры, жемчужная вышивка и камея создают атмосферу благородной роскоши и утончённой красоты — дух старинных традиций и тепло ручной работы.', mat:'Ткань, кружево, камея, жемчуг, стразы, металлическая фурнитура', col:'Айвори, белый, золотой, прозрачный', feat:'Объёмные элементы, ручная работа'},
+    {id:'flowers-tassel', tags:'ivory', name:'Шар с белыми цветами и кисточкой', coll:'Зимняя нежность', desc:'Белые цветы, жемчужные бусины и сверкающие стразы создают образ лёгкости, чистоты и благородной красоты.', mat:'Ткань, вышивка, жемчужные бусины, стразы, металлическая фурнитура', col:'Белый, золотой, перламутровый', feat:'Объёмные цветы, ручная работа'},
+    {id:'bow-tassel', tags:'ivory', name:'Шар с белым бантом и кисточкой', coll:'Элегантная классика', desc:'Сочетание белого шнура, сияющих страз и жемчужных деталей создаёт ощущение лёгкости и благородства. Объёмный бант и изящная кисточка придают особый шарм.', mat:'Шнур, атласная лента, стразы, жемчуг, металлическая фурнитура', col:'Белый, золотой, перламутровый', feat:'Объёмный бант, ручная работа'},
+    {id:'ballerina', tags:'ivory', name:'Шар с балериной', coll:'Танец вдохновения', desc:'Изящная балерина, словно застывшая в танце, напоминает о мечтах, которые делают нашу жизнь особенной. Ручная работа и утончённые детали.', mat:'Жемчуг, стразы, декоративные элементы, текстиль, полимерная глина, металлическая фурнитура', col:'Белый, золотой, жемчужный', feat:'Объёмная балерина, ручная работа'},
+    {id:'flowers-pearl', tags:'ivory', name:'Шар с цветами и жемчугом', coll:'Зимняя нежность', desc:'Объёмные цветы из ткани, жемчужные бусины и золотистые элементы создают эффект роскоши и праздничного сияния.', mat:'Ткань, жемчужные бусины, стразы, металлическая фурнитура', col:'Белый, золотой, перламутровый', feat:'Объёмные цветы, ручная работа'},
+    {id:'velvet-embroidery', tags:'velvet emerald', name:'Шар из бархата и вышивки', coll:'Праздничный сад', desc:'Сочетание роскошного бархата и изысканной вышивки. Каждый шар украшен вручную: золотые элементы, стразы и благородные ткани создают атмосферу праздника и уюта.', mat:'Бархат, вышивка, стразы, металлическая фурнитура', col:'Изумрудный, красный, золотой, бежевый', feat:'Объёмная вышивка, ручная работа'},
+    {id:'velvet-trim', tags:'red velvet', name:'Шар с бархатной отделкой', coll:'Новогодние традиции', desc:'Бархатная поверхность создаёт эффект благородной глубины, а изящная вышивка, кристаллы и декоративные элементы придают шару особое очарование.', mat:'Бархат, металлизированная нить, кристаллы, бусины, декоративные элементы, кисть', col:'Красный, золотой, зелёный, прозрачный', feat:'Объёмная вышивка, благородная детализация'},
+    {id:'emerald-bow', tags:'emerald velvet', name:'Шар с изумрудным бантом', coll:'Изумрудное сияние', desc:'Глубокий изумрудный цвет символизирует гармонию, благополучие и внутреннюю силу. Бархатный бант и кристаллы придают особое очарование и праздничное великолепие.', mat:'Бархат, металлизированная сетка, кристаллы, стразы, декоративная фурнитура', col:'Изумрудный, золотой, серебристый', feat:'Объёмный бархатный бант, премиальные материалы'},
+    {id:'velvet-sparkle', tags:'emerald velvet', name:'Бархатный шар с блеском', coll:'Бархатные сферы', desc:'Глубокий цвет бархата, мерцание глиттера и сияние страз создают эффектный и элегантный образ, который притягивает взгляд.', mat:'Бархат, глиттер, стразы, металлическая фурнитура', col:'Изумрудный, тёмно-зелёный, золотой, прозрачный', feat:'Уникальное сочетание материалов'},
+    {id:'velvet-bow', tags:'emerald velvet', name:'Шар бархатный с бантом', coll:'Бархатные сны', desc:'Глубокий бархат, переливающиеся кристаллы и золотые акценты создают атмосферу утончённой роскоши, которая превращает ёлку в настоящую сказку.', mat:'Бархат, металл, кристаллы, стразы, декоративные элементы, лента', col:'Изумрудный, золотой, серебристый', feat:'Уникальный дизайн, премиальные материалы'},
+    {id:'mixed', tags:'red velvet', name:'Шар из смешанных материалов', coll:'Новогодние традиции', desc:'Сочетание традиционных и современных материалов. Яркая фактура и глубокие цвета создают ощущение праздничного блеска и тепла.', mat:'Шнур декоративный, бархат, стразы, металлическая фурнитура', col:'Красный, зелёный, золотой, прозрачный', feat:'Объёмная текстура, уникальное сочетание'},
+    {id:'vintage', tags:'red velvet', name:'Винтажный шар', coll:'Винтажный шик', desc:'Элегантный шар, вдохновлённый стилем старинных ёлочных украшений. Бархатная поверхность, золотая вышивка, кристаллы и жемчужные акценты создают атмосферу благородного уюта.', mat:'Бархат, атлас, металлические элементы, кристаллы, жемчуг, декоративная тесьма', col:'Красный, золото, белый, прозрачный', feat:'Благородная детализация, ручная работа'}
+  ];
+  var KEY = 'soh_liked_v1';
+  var liked = SOH_store.get(KEY, {});
+  var HEART = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7C19.5 15.9 12 20.5 12 20.5z" stroke="currentColor" stroke-width="1.7" fill="none"/></svg>';
+  var gallery = document.getElementById('gallery');
+
+  gallery.innerHTML = WORKS.map(function(w, i){
+    return '<article class="work" id="w-'+w.id+'" data-tags="'+w.tags+(liked[w.id]?' liked':'')+'" data-i="'+i+'">'+
+      '<button class="work-btn" type="button" data-open="'+i+'" aria-label="Открыть: '+w.name+'"><img src="img/'+w.id+'.jpg" alt="'+w.name+'" loading="lazy"><span class="zoom">Подробнее</span></button>'+
+      '<div class="work-info"><div><h3 class="work-name">'+w.name+'</h3><p class="work-coll">'+w.coll+'</p></div>'+
+      '<button class="heart" type="button" data-like="'+w.id+'" aria-pressed="'+(liked[w.id]?'true':'false')+'" aria-label="Отметить: '+w.name+'">'+HEART+'</button></div>'+
+    '</article>';
+  }).join('');
+
+  function refreshLikes(){
+    document.getElementById('likedCount').textContent = Object.keys(liked).filter(function(k){return liked[k];}).length;
+    WORKS.forEach(function(w){
+      var el = document.getElementById('w-'+w.id);
+      el.setAttribute('data-tags', w.tags + (liked[w.id] ? ' liked' : ''));
+      el.querySelector('.heart').setAttribute('aria-pressed', liked[w.id] ? 'true' : 'false');
+    });
+  }
+  function toggleLike(id){ liked[id] = !liked[id]; SOH_store.set(KEY, liked); refreshLikes(); }
+  refreshLikes();
+
+  SOH_filter(document.getElementById('filters'), function(){ return gallery.querySelectorAll('.work'); }, 'data-tags', function(n){ document.getElementById('shownCount').textContent = n; });
+
+  // диалог с подробностями
+  var dlg = document.getElementById('workDialog'), cur = 0;
+  function show(i){
+    cur = (i + WORKS.length) % WORKS.length; var w = WORKS[cur];
+    var img = document.getElementById('dlgImg'); img.src = 'img/'+w.id+'.jpg'; img.alt = w.name;
+    document.getElementById('dlgTitle').textContent = w.name;
+    document.getElementById('dlgColl').textContent = 'Коллекция «'+w.coll+'»';
+    document.getElementById('dlgDesc').textContent = w.desc;
+    document.getElementById('dlgMeta').innerHTML =
+      '<div><dt>Материалы</dt><dd>'+w.mat+'</dd></div><div><dt>Цвета</dt><dd>'+w.col+'</dd></div>'+
+      '<div><dt>Размер</dt><dd>8 см (без подвески)</dd></div><div><dt>Особенность</dt><dd>'+w.feat+'</dd></div>';
+    document.getElementById('dlgLike').setAttribute('aria-pressed', liked[w.id] ? 'true' : 'false');
+  }
+  function open(i){ show(i); if(!dlg.open){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); } }
+  gallery.addEventListener('click', function(e){
+    var o = e.target.closest('[data-open]'); if(o){ open(+o.dataset.open); return; }
+    var l = e.target.closest('[data-like]'); if(l) toggleLike(l.dataset.like);
+  });
+  document.getElementById('dlgClose').addEventListener('click', function(){ dlg.close(); });
+  document.getElementById('dlgPrev').addEventListener('click', function(){ show(cur - 1); });
+  document.getElementById('dlgNext').addEventListener('click', function(){ show(cur + 1); });
+  document.getElementById('dlgLike').addEventListener('click', function(){ toggleLike(WORKS[cur].id); show(cur); });
+  dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+  dlg.addEventListener('keydown', function(e){ if(e.key === 'ArrowLeft') show(cur - 1); if(e.key === 'ArrowRight') show(cur + 1); });
+
+  // ссылка вида raboty.html#cameo открывает нужную работу
+  var hash = (location.hash || '').slice(1);
+  WORKS.forEach(function(w, i){ if(w.id === hash){ setTimeout(function(){ open(i); }, 50); } });
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var text = Array.prototype.map.call(document.querySelectorAll('#theses li'), function(li){ return '— ' + li.textContent.trim(); }).join('\n');
+    SOH_copy(this, text, 'Скопировать тезисы');
+  });
+})();
+</script>
+
+</body>
+</html>

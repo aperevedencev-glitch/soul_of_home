@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Уроки · Soul of Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="nav-inner">
+    <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+    <nav class="nav-links" aria-label="Разделы сайта">
+      <a href="./">Главная</a>
+      <a href="raboty.html">Мои работы</a>
+      <a href="obuchenie.html">Обучение</a>
+      <a href="uroki.html" aria-current="page">Уроки</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="obuchenie.html#apply">Записаться</a>
+      <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="hero compact">
+  <div class="wrap hero-grid">
+    <div>
+    <p class="crumbs"><a href="./">Главная</a> · Уроки</p>
+    <p class="eyebrow light">Бесплатные материалы</p>
+    <h1>Уроки о дизайне, уюте и <em>вещах ручной работы</em></h1>
+    <p class="lede">Короткие практичные уроки, которые можно применить в тот же вечер: как собрать палитру, поставить свет, сочетать текстиль, сделать первый бархатный шар и сохранить игрушки до следующего Нового года.</p>
+    <div class="cta-row hero-cta"><a href="#velvet-ball" class="btn-primary">Сделать первый бархатный шар</a></div>
+    </div>
+    <div class="hero-art">
+      <div class="arch"><img class="pos-ball" src="img/velvet-lesson.jpg" alt="Изумрудный бархатный шар с золотой вышивкой и жемчугом на вязаном пледе у ёлки" width="800" height="1422"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="toolbar">
+      <div>
+        <div class="filters" id="lessonFilters" role="group" aria-label="Темы уроков">
+          <button class="chip active" type="button" data-filter="all" aria-pressed="true">Все темы</button>
+          <button class="chip" type="button" data-filter="design" aria-pressed="false">Цвет и свет</button>
+          <button class="chip" type="button" data-filter="textile" aria-pressed="false">Текстиль и фактура</button>
+          <button class="chip" type="button" data-filter="craft" aria-pressed="false">Ручная работа</button>
+          <button class="chip" type="button" data-filter="care" aria-pressed="false">Уход и хранение</button>
+        </div>
+        <p class="count-line">Уроков в подборке: <b id="lessonCount">8</b></p>
+      </div>
+    </div>
+
+    <div class="lessons" id="lessons">
+
+      <article class="lesson" id="palette" data-tags="design">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Цвет</span>
+          <span><span class="lesson-title">Палитра ёлки и комнаты по правилу 60 · 30 · 10</span><span class="lesson-sum">Три цвета в нужной пропорции дают спокойную и собранную картинку вместо пёстрой.</span><span class="lesson-time">5 минут чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <p>Правило пришло из интерьерного дизайна: 60% пространства занимает основной цвет, 30% — поддерживающий, 10% — акцент. Оно одинаково хорошо работает для гостиной и для новогодней ёлки.</p>
+          <div class="ratio" aria-label="Пример пропорции: 60% изумрудный, 30% айвори, 10% золото">
+            <span style="flex:60;background:#16281F;color:#F6F1E4;">60% изумруд</span>
+            <span style="flex:30;background:#EFE6D0;color:#16281F;">30% айвори</span>
+            <span style="flex:10;background:#C79A46;color:#16281F;">10%</span>
+          </div>
+          <h4>Как применить к ёлке</h4>
+          <ol>
+            <li>Основной цвет — сама хвоя и самые крупные шары. Для зелёной ели основой часто служит глубокий изумрудный бархат.</li>
+            <li>Поддерживающий цвет — большинство средних игрушек и лента: айвори, жемчужный, белый.</li>
+            <li>Акцент — мелкие детали, которые ловят свет: золотая фурнитура, стразы, 2–3 красных шара.</li>
+          </ol>
+          <h4>Как применить к комнате</h4>
+          <ol>
+            <li>60% — стены, пол и крупная мебель.</li>
+            <li>30% — шторы, ковёр, обивка кресла.</li>
+            <li>10% — подушки, вазы, свечи и декор, который легко поменять к сезону.</li>
+          </ol>
+          <div class="tip"><b>Подсказка.</b> Если не можете выбрать акцент, возьмите его из вещи, которую любите: картины, пледа, любимой чашки. Так палитра сразу становится личной.</div>
+        </div>
+      </article>
+
+      <article class="lesson" id="light" data-tags="design">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Свет</span>
+          <span><span class="lesson-title">Тёплый свет: 2700 K и три уровня освещения</span><span class="lesson-sum">Главная причина «неуютной» комнаты — одна холодная люстра под потолком.</span><span class="lesson-time">6 минут чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <p>Цветовая температура ламп измеряется в кельвинах и указана на упаковке. Для жилых комнат выбирайте 2700–3000 K: это тёплый, чуть желтоватый свет, похожий на лампу накаливания. Лампы на 4000 K и выше хороши для рабочего стола и ванной, но в гостиной делают атмосферу офисной.</p>
+          <h4>Три уровня света</h4>
+          <ol>
+            <li><b>Общий</b> — люстра или потолочные светильники. Включаются, когда нужно много света: уборка, гости.</li>
+            <li><b>Локальный</b> — торшер у кресла, настольная лампа, подсветка над столешницей. Свет там, где вы что-то делаете.</li>
+            <li><b>Акцентный</b> — гирлянда, свечи, подсветка полки или картины. Именно он создаёт вечернее настроение.</li>
+          </ol>
+          <p>Вечером попробуйте выключить верхний свет и оставить только второй и третий уровни. Комната сразу станет глубже и спокойнее.</p>
+          <div class="tip"><b>Подсказка.</b> Обратите внимание на индекс цветопередачи (CRI или Ra) на упаковке. При значении 90 и выше ткани, дерево и бархатные игрушки выглядят так же, как при дневном свете.</div>
+        </div>
+      </article>
+
+      <article class="lesson" id="textures" data-tags="textile">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Фактура</span>
+          <span><span class="lesson-title">Правило трёх текстур</span><span class="lesson-sum">Почему однотонный интерьер может быть тёплым, а яркий — плоским.</span><span class="lesson-time">4 минуты чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <p>Глаз считывает не только цвет, но и то, как поверхность отражает свет. Когда рядом стоят гладкое, мягкое и рельефное, композиция кажется «дорогой» даже в одной гамме.</p>
+          <ol>
+            <li><b>Гладкое</b> — атлас, стекло, керамика с глазурью, металл. Даёт блики.</li>
+            <li><b>Мягкое</b> — бархат, шерсть, букле, мех. Поглощает свет и добавляет глубины.</li>
+            <li><b>Рельефное</b> — кружево, вышивка, вязка, плетёная корзина, необработанное дерево. Даёт игру теней.</li>
+          </ol>
+          <p>Именно так устроены шары из коллекции: бархатная основа, атласный бант и рельефная вышивка или кружево. Тот же приём работает для дивана (льняная обивка, бархатная подушка, вязаный плед) или праздничного стола (льняная скатерть, стекло, веточки хвои).</p>
+          <div class="tip"><b>Упражнение.</b> Выберите одну полку или комод и соберите на нём три предмета разных фактур в одном цвете. Сфотографируйте до и после.</div>
+        </div>
+      </article>
+
+      <article class="lesson" id="velvet-ball" data-tags="craft">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Ручная работа</span>
+          <span><span class="lesson-title">Как сделать первый бархатный шар</span><span class="lesson-sum">Мастер-класс в 6 шагов: обтяжка основы бархатом на клей, свой узор из вышивки и бусин, шапочка и лента.</span><span class="lesson-time">Практика · 2–3 часа</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <figure class="lesson-figure"><img src="img/masterclass-velvet.jpg" alt="Мастер-класс «Как сделать первый бархатный шар»: Нейрокот рядом с изумрудным шаром и шесть шагов работы" loading="lazy" width="1536" height="1024"></figure>
+          <p>Пошаговый урок по созданию новогоднего украшения своими руками. Опыт не нужен: за один вечер у вас будет готовый шар для своей ёлки.</p>
+
+          <h4>1. Подготовьте материалы</h4>
+          <ul>
+            <li>Основа — пенопластовый шар диаметром 8 см, плотный и гладкий</li>
+            <li>Бархатная ткань — отрез около 30 × 30 см; стрейч-бархат тянется и ложится без складок</li>
+            <li>Прозрачный клей для ткани и кисть или лопатка, чтобы распределить его тонким слоем</li>
+            <li>Декор — металлизированная нить для вышивки, бусины и жемчуг, стразы, металлические элементы</li>
+            <li>Декоративная шапочка с петлёй и атласная лента около 50 см</li>
+            <li>Острые ножницы по ткани, несколько портновских булавок и нитка</li>
+          </ul>
+
+          <h4>2. Обтяните основу бархатом</h4>
+          <ol>
+            <li>Вырежьте из бархата круг диаметром 26–28 см. Этого хватит, чтобы ткань закрыла шар от низа до верха с запасом.</li>
+            <li>Поставьте шар в центр круга на изнанку ткани. Нанесите клей тонким слоем на нижнюю половину шара.</li>
+            <li>Аккуратно натяните ткань вверх и прижмите к клею, разглаживая от низа к экватору. Двигайтесь по кругу небольшими участками.</li>
+            <li>Нанесите клей на верхнюю половину и продолжайте натягивать бархат к верхней точке, распределяя складки равномерно.</li>
+            <li>Соберите излишки ткани наверху, стяните ниткой, закрепите булавкой и срежьте лишнее, оставив 5–7 мм. Эту сборку потом закроет шапочка.</li>
+          </ol>
+          <div class="tip"><b>Подсказка.</b> Разглаживайте бархат по направлению ворса, сверху вниз. Так поверхность получится ровной по цвету и не будет «пятнистой» на свету.</div>
+
+          <h4>3. Добавьте декор</h4>
+          <p>Используйте вышивку, бусины, стразы или металлические элементы и создайте свой узор. Проще всего начать с веточек: наметьте их мелом или тонким маркером для ткани и расшейте металлизированной нитью, а в конце веточек пришейте или приклейте жемчужины. Декор кладите симметрично относительно верхней точки, чтобы шар смотрелся одинаково с любой стороны ёлки.</p>
+
+          <h4>4. Закрепите крепление</h4>
+          <p>Установите декоративную шапочку на верхнюю точку поверх сборки ткани, закрепив её каплей клея. Проденьте ленту в петлю шапочки и завяжите бант.</p>
+
+          <h4>5. Проверьте и подправьте</h4>
+          <p>Убедитесь, что все элементы хорошо закреплены: слегка покачайте бусины и стразы, проверьте края ткани у шапочки. При необходимости добавьте клей и дайте шару полностью высохнуть по инструкции к клею, прежде чем вешать его на ёлку.</p>
+
+          <h4>6. Ваш первый бархатный шар готов!</h4>
+          <p>Наслаждайтесь результатом и создавайте новые шедевры. Пришлите фото своего шара в Telegram-бот <a class="link-inline" href="https://t.me/SoulHomeRuBot?start=velvet" target="_blank" rel="noopener">@SoulHomeRuBot</a> — мастер посмотрит и подскажет.</p>
+
+          <h4>Полезные советы</h4>
+          <ul>
+            <li>Используйте качественный бархат: он не осыпается и лучше держит форму.</li>
+            <li>Для ровной поверхности берите шар из пенопласта.</li>
+            <li>Экспериментируйте с цветами и декором.</li>
+          </ul>
+          <p>Хотите пойти дальше: объёмная вышивка, жемчуг, кружево? Это программа курсов <a class="link-inline" href="obuchenie.html#course-velvet">«Бархатный шар»</a> и <a class="link-inline" href="obuchenie.html#course-embroidery">«Вышивка, жемчуг и кружево»</a>.</p>
+        </div>
+      </article>
+
+      <article class="lesson" id="tree" data-tags="craft design">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Праздник</span>
+          <span><span class="lesson-title">Как нарядить ёлку, чтобы она выглядела объёмной</span><span class="lesson-sum">Порядок украшения, от которого зависит, будет ли ёлка «дизайнерской».</span><span class="lesson-time">5 минут чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <ol>
+            <li><b>Расправьте ветки.</b> У искусственной ели разведите каждую веточку в стороны, начиная снизу и от ствола. Это самый скучный и самый важный шаг.</li>
+            <li><b>Гирлянда.</b> Ведите её от ствола к краю ветки и обратно, а не просто по кругу. Распространённый ориентир — около 100 лампочек на каждые 30 см высоты ёлки.</li>
+            <li><b>Крупные шары вглубь.</b> Самые большие и простые шары повесьте ближе к стволу: они создадут глубину и отражения.</li>
+            <li><b>Средние игрушки.</b> Распределите их по воображаемым треугольникам, чтобы одинаковые шары не оказывались рядом.</li>
+            <li><b>Акценты снаружи.</b> Авторские шары ручной работы повесьте на концах веток на уровне глаз: их должны видеть и рассматривать.</li>
+            <li><b>Лента и финал.</b> Добавьте ленту и верхушку, отойдите на три шага и прищурьтесь: пустые места и слишком плотные пятна станут заметны сразу.</li>
+          </ol>
+          <div class="tip"><b>Подсказка.</b> Тяжёлые шары с вышивкой и жемчугом вешайте ближе к основанию крепких веток, иначе ветка прогнётся и шар развернётся к стене.</div>
+        </div>
+      </article>
+
+      <article class="lesson" id="pillows" data-tags="textile">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Текстиль</span>
+          <span><span class="lesson-title">Подушки и пледы: как сочетать текстиль в гостиной</span><span class="lesson-sum">Самый быстрый способ сменить настроение комнаты к сезону без ремонта.</span><span class="lesson-time">4 минуты чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <ol>
+            <li><b>Нечётное число.</b> Три или пять подушек выглядят живее, чем строгая симметричная пара.</li>
+            <li><b>Разные размеры.</b> Сзади крупнее (50 × 50 см), впереди мельче (40 × 40 см) или валик.</li>
+            <li><b>Один узор.</b> Одна подушка с рисунком, остальные однотонные, но разных фактур: бархат, лён, вязка.</li>
+            <li><b>Цвет из палитры.</b> Текстиль — ваши «30%» и «10%» из правила 60 · 30 · 10.</li>
+            <li><b>Плед небрежно.</b> Перекиньте плед через подлокотник или спинку, а не складывайте идеально ровно: он должен выглядеть так, будто им только что пользовались.</li>
+          </ol>
+          <div class="tip"><b>Сезонная смена.</b> Осенью и зимой — бархат, шерсть, вельвет в глубоких тонах. Весной и летом — лён и хлопок в светлых. Чехлы на подушки хранятся компактно, а эффект обновления заметен сразу.</div>
+        </div>
+      </article>
+
+      <article class="lesson" id="storage" data-tags="care">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Уход</span>
+          <span><span class="lesson-title">Как хранить бархатные и вышитые игрушки</span><span class="lesson-sum">Чтобы шары ручной работы оставались красивыми через десять лет.</span><span class="lesson-time">3 минуты чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <ol>
+            <li><b>Проверьте перед упаковкой.</b> Осмотрите стразы, бусины и кисточки. Отклеившийся элемент проще вернуть на место сейчас, чем искать потом.</li>
+            <li><b>Почистите бархат.</b> Пыль снимается мягкой щёткой по направлению ворса. Примятый ворс можно поднять паром, держа отпариватель на расстоянии 15–20 см. Не мочите вышивку и клеевые детали.</li>
+            <li><b>Заверните каждый шар.</b> Используйте папиросную бумагу, лучше бескислотную. Полиэтиленовые пакеты не подходят: в них скапливается влага.</li>
+            <li><b>Коробка с ячейками.</b> Шары не должны касаться друг друга, иначе стразы царапают соседей, а банты сминаются. Подойдут коробки из-под фруктов или ёлочных игрушек с разделителями.</li>
+            <li><b>Сухое место.</b> Храните в шкафу или на антресоли, а не на балконе или в гараже: перепады температуры и влажности вредят ткани и клею. Положите в коробку пакетик силикагеля.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="lesson" id="gift" data-tags="craft">
+        <button class="lesson-head" type="button" aria-expanded="false">
+          <span class="lesson-topic">Подарки</span>
+          <span><span class="lesson-title">Как упаковать подарок ручной работы</span><span class="lesson-sum">Упаковка и открытка с историей делают из вещи подарок, который сохраняют.</span><span class="lesson-time">4 минуты чтения</span></span>
+          <span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="lesson-body">
+          <ol>
+            <li><b>Жёсткая коробка.</b> Шар ручной работы кладите в коробку по размеру, на подложку из бумажного наполнителя, чтобы он не катался.</li>
+            <li><b>Сдержанная обёртка.</b> Крафт или однотонная бумага, лента из натуральной ткани или бархата, веточка эвкалипта или хвои. Упаковка не должна спорить с подарком.</li>
+            <li><b>Карточка с историей.</b> Напишите название изделия и коллекции, из чего оно сделано, как за ним ухаживать и для кого вы его делали. Такие карточки хранят вместе с игрушкой годами.</li>
+            <li><b>Подпись и год.</b> Поставьте на карточке или на колпачке шара дату. Через несколько лет у семьи появится своя коллекция с историей.</li>
+          </ol>
+          <div class="tip"><b>Для мастеров.</b> Та же карточка работает и при продаже: покупатель платит не только за материалы, а за историю и заботу. Подробнее — на разборе <a class="link-inline" href="obuchenie.html#course-business">«От хобби к делу»</a>.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap cta-cat-grid">
+    <div class="arch cta-arch"><img class="pos-red" src="img/velvet-red.jpg" alt="Красный бархатный шар с золотой вышивкой, жемчугом и кисточкой на вязаном пледе у ёлки" loading="lazy" width="1000" height="1000"></div>
+    <div class="cta-cat-text">
+      <p class="eyebrow light">Готовы к большему?</p>
+      <h2>Уроки — это начало. На курсах разбираем всё подробно и с обратной связью</h2>
+      <p>Видеоуроки, списки материалов и личный разбор вашей работы.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="obuchenie.html">Выбрать программу</a>
+        <a class="link-secondary" href="https://t.me/SoulHomeRuBot?start=uroki" target="_blank" rel="noopener">Уроки в Telegram-боте</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+        <p>Мастерская и школа ручной работы для уютного дома</p>
+      </div>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </div>
+    <p class="foot-note">© 2026 Soul of Home · Все изделия и фотографии — авторская ручная работа</p>
+  </div>
+</footer>
+<script src="site.js" charset="utf-8"></script>
+
+<script>
+(function(){
+  var list = document.getElementById('lessons');
+  function setOpen(item, open){
+    item.classList.toggle('open', open);
+    item.querySelector('.lesson-head').setAttribute('aria-expanded', String(open));
+  }
+  list.addEventListener('click', function(e){
+    var head = e.target.closest('.lesson-head'); if(!head) return;
+    var item = head.closest('.lesson'); setOpen(item, !item.classList.contains('open'));
+  });
+  SOH_filter(document.getElementById('lessonFilters'), function(){ return list.querySelectorAll('.lesson'); }, 'data-tags', function(n){ document.getElementById('lessonCount').textContent = n; });
+  // первый урок открыт, чтобы было видно формат; ссылка uroki.html#storage откроет нужный
+  var hash = (location.hash || '').slice(1);
+  var target = hash && document.getElementById(hash);
+  if(target && target.classList.contains('lesson')){ setOpen(target, true); setTimeout(function(){ target.scrollIntoView(); }, 50); }
+  else setOpen(list.querySelector('.lesson'), true);
+  window.addEventListener('hashchange', function(){ var t = document.getElementById(location.hash.slice(1)); if(t && t.classList.contains('lesson')){ setOpen(t, true); t.scrollIntoView(); } });
+})();
+</script>
+
+</body>
+</html>

@@ -1,129 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Soul of House — дизайн интерьера квартир и домов</title>
-<meta name="description" content="Soul of House — авторский дизайн интерьера и консультации по подбору мебели и декора. От концепции до рабочей документации.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B2118'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23E8905A' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
-<meta property="og:title" content="Soul of House — дизайн интерьера квартир и домов">
-<meta property="og:description" content="Авторский дизайн интерьера и консультации по подбору — от концепции до рабочей документации.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Soul of House">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soul of Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="progress"><i id="scrollProgress"></i></div>
-
-<header class="container nav">
-  <a href="index.html" class="logo">Soul of House</a>
-  <nav class="site-nav">
-    <a href="index.html" class="active">Главная</a>
-    <a href="pricing.html">Услуги</a>
-    <a href="quiz.html">Диагностика стиля</a>
-    <a href="checklist.html">Чек-лист</a>
-    <a href="blog/index.html">Блог</a>
-    <a href="contact.html">Контакты</a>
-  </nav>
-  <div class="nav-actions">
-    <a href="quiz.html" class="badge">Какой стиль вам подходит?</a>
+<header class="site">
+  <div class="nav-inner">
+    <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+    <nav class="nav-links" aria-label="Разделы сайта">
+      <a href="./" aria-current="page">Главная</a>
+      <a href="raboty.html">Мои работы</a>
+      <a href="obuchenie.html">Обучение</a>
+      <a href="uroki.html">Уроки</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="obuchenie.html#apply">Записаться</a>
+      <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
   </div>
 </header>
-
 <main>
-<section class="container hero">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow">Дизайн интерьера</div>
-      <h1>Soul of House — дом, который звучит как вы</h1>
-      <p class="lead">Авторский дизайн интерьера квартир и домов — от концепции до рабочей документации. Для тех, кто не готов на полный проект, — разовые консультации и подбор мебели и декора.</p>
-      <div class="hero-actions">
-        <a class="btn" href="pricing.html">Смотреть услуги</a>
-        <a class="btn secondary" href="quiz.html">Пройти диагностику стиля →</a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow light">Мастерская и школа ручной работы</p>
+      <h1>Дом, в котором живёт <em>душа</em>, собирается из вещей, сделанных руками</h1>
+      <p class="lede">Я создаю авторские новогодние шары из бархата, кружева и жемчуга — и учу делать их самостоятельно. А ещё рассказываю, как цвет, свет и текстиль превращают обычную квартиру в дом, куда хочется возвращаться.</p>
+      <div class="cta-row">
+        <a href="raboty.html" class="btn-primary">Смотреть мои работы</a>
+        <a href="obuchenie.html" class="link-secondary">Выбрать обучение →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>12</b><span>авторских шаров в коллекции</span></div>
+        <div class="stat"><b>6</b><span>программ обучения</span></div>
+        <div class="stat"><b>8</b><span>бесплатных уроков</span></div>
       </div>
     </div>
-    <div class="hero-media">
-      <img class="mascot-photo" src="assets/neurocat.png" alt="Soul of House — нейрокот, маскот студии" width="900" height="900" loading="eager">
+    <div class="hero-art">
+      <button class="mascot-btn" type="button" data-neurocat aria-label="Открыть чат с Нейрокотом">
+        <img class="hero-mascot" src="img/cat-mascot.webp" alt="Нейрокот — пушистый талисман Soul of Home с сияющими нитями огоньков" width="900" height="900">
+        <span class="mascot-tip"><span class="dot"></span>Нейрокот · спросите меня</span>
+      </button>
     </div>
   </div>
 </section>
 
-<section class="container section tight">
-  <div class="section-head">
-    <h2 class="small">Что мы делаем</h2>
-    <p class="section-copy">Два формата работы — под то, сколько у вас времени, бюджета и готовности довериться дизайнеру полностью.</p>
-  </div>
-  <div class="grid2">
-    <div class="card">
-      <span class="tag">ПОЛНЫЙ ПРОЕКT</span>
-      <h3 style="margin-top:14px">Дизайн интерьера квартир и домов</h3>
-      <p>Концепция, планировочное решение, 3D-визуализация и рабочая документация — комплект чертежей, с которым можно идти к ремонтной бригаде. Сопровождаем на всех этапах, от первого замера до расстановки декора.</p>
+<section id="directions">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Что здесь есть</p>
+      <h2>Три двери в одну мастерскую</h2>
+      <p>Можно просто полюбоваться работами, можно научиться делать такие же, а можно начать с бесплатных уроков и понять, с чего начинается уют.</p>
     </div>
-    <div class="card">
-      <span class="tag">ТОЧЕЧНО</span>
-      <h3 style="margin-top:14px">Консультации и подбор</h3>
-      <p>Разовая консультация по планировке или цвету, подбор мебели и декора под уже сложившийся интерьер, помощь с зонированием — если полный проект избыточен, а взгляд со стороны нужен.</p>
-    </div>
-  </div>
-</section>
-
-<section class="container section tight">
-  <div class="section-head">
-    <h2 class="small">Как проходит работа</h2>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>Диагностика и бриф</h3>
-      <p class="small">Обсуждаем задачу, бюджет и то, как вы живёте в пространстве — на этом строится вся концепция.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>Концепция и визуализация</h3>
-      <p class="small">Планировка, стиль, материалы — в виде 3D-визуализации, которую можно обсуждать и править.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Документация и сопровождение</h3>
-      <p class="small">Рабочие чертежи для бригады и авторский надзор — чтобы результат совпал с картинкой.</p>
+    <div class="modules">
+      <a class="module" href="raboty.html">
+        <h3>Мои работы</h3>
+        <p>Коллекция новогодних шаров ручной работы: камея и кружево, изумрудный бархат, винтажная вышивка. У каждого шара своя история и состав.</p>
+        <span class="more">Открыть коллекцию <span>→</span></span>
+      </a>
+      <a class="module" href="obuchenie.html">
+        <h3>Обучение</h3>
+        <p>Курсы по созданию ёлочных игрушек, по дизайну уютного интерьера и по тому, как превратить хобби в небольшое дело.</p>
+        <span class="more">Выбрать программу <span>→</span></span>
+      </a>
+      <a class="module" href="uroki.html">
+        <h3>Бесплатные уроки</h3>
+        <p>Короткие практичные материалы: палитра ёлки, правило трёх текстур, тёплый свет, первый бархатный шар и уход за игрушками.</p>
+        <span class="more">Читать уроки <span>→</span></span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="container cta with-mascot">
-  <img class="cta-mascot photo-card" src="assets/neurocat-lifestyle.jpg" alt="Soul of House — уют дома с нейрокотом" width="1000" height="1000" loading="lazy">
-  <div class="cta-copy">
-    <h2>Не уверены, какой стиль вам подходит?</h2>
-    <p>Короткая диагностика — 5 вопросов — поможет понять, тяготеете вы к минимализму, скандинавскому уюту или тёплой эклектике, и с чего лучше начать разговор с дизайнером.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a class="btn cta-orange" href="quiz.html">Пройти диагностику →</a>
+<section class="band">
+  <div class="wrap">
+    <div class="section-head row">
+      <div>
+        <p class="eyebrow">Из коллекции</p>
+        <h2>Шары, которые превращают ёлку в произведение искусства</h2>
+      </div>
+      <a class="link-inline" href="raboty.html">Все 12 работ →</a>
+    </div>
+    <div class="works-strip">
+      <a href="raboty.html#cameo"><img src="img/cameo.jpg" alt="Шар с камеей и кружевом" loading="lazy"><span class="t">Шар с камеей и кружевом</span><span class="c">Классическая элегантность</span></a>
+      <a href="raboty.html#emerald-bow"><img src="img/emerald-bow.jpg" alt="Шар с изумрудным бантом" loading="lazy"><span class="t">Шар с изумрудным бантом</span><span class="c">Изумрудное сияние</span></a>
+      <a href="raboty.html#ballerina"><img src="img/ballerina.jpg" alt="Шар с балериной" loading="lazy"><span class="t">Шар с балериной</span><span class="c">Танец вдохновения</span></a>
+      <a href="raboty.html#vintage"><img src="img/vintage.jpg" alt="Винтажный шар" loading="lazy"><span class="t">Винтажный шар</span><span class="c">Винтажный шик</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Почему ручная работа</p>
+      <h2>Разница между вещью, которая заполняет полку, и вещью, которая создаёт настроение</h2>
+      <p>Уют редко получается из покупок «по акции». Он складывается из немногих вещей, у которых есть фактура, история и характер.</p>
+    </div>
+    <div class="compare">
+      <div class="compare-card bad">
+        <h3>Серийный декор</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="#8C2F3B" stroke-width="1.6" stroke-linecap="round"/></svg>Пластик и глянец, которые выглядят одинаково в тысячах квартир</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="#8C2F3B" stroke-width="1.6" stroke-linecap="round"/></svg>Покупается «на сезон» и через год уходит в коробку или в мусор</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="#8C2F3B" stroke-width="1.6" stroke-linecap="round"/></svg>Цвета подобраны под витрину, а не под ваш интерьер</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="#8C2F3B" stroke-width="1.6" stroke-linecap="round"/></svg>Нет истории, которую захочется рассказать гостям</li>
+        </ul>
+      </div>
+      <div class="compare-card good">
+        <h3>Вещь ручной работы</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Бархат, кружево, жемчуг и вышивка: фактура, которую хочется потрогать</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Становится семейной реликвией, которую достают каждый декабрь</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Цвет и отделку можно подобрать под конкретную ёлку и комнату</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3" stroke="#C79A46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>А если сделать её своими руками, у дома появляется ваша собственная история</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof-section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow light">Три опоры уюта</p>
+      <h2>Правила, с которых начинается любое пространство</h2>
+      <p>Подробно разбираем их в бесплатных уроках и на курсе «Дизайн уютного дома».</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="delta">60 · 30 · 10</div>
+        <h3>Цвет</h3>
+        <p>Один основной цвет, один поддерживающий и один акцент. Работает и для гостиной, и для ёлки.</p>
+      </div>
+      <div class="proof-card">
+        <div class="delta">2700 K</div>
+        <h3>Свет</h3>
+        <p>Тёплая цветовая температура ламп и три уровня освещения вместо одной люстры под потолком.</p>
+      </div>
+      <div class="proof-card">
+        <div class="delta">3 текстуры</div>
+        <h3>Фактура</h3>
+        <p>Гладкое, мягкое и рельефное в одной композиции: например, атлас, бархат и кружево на одном шаре.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap hero-grid about-grid">
+    <div>
+      <p class="eyebrow">О мастерской</p>
+      <h2 class="about-h">Soul of Home — это про вещи, в которые вложено время и внимание</h2>
+      <div class="about-text">
+        <p>Всё началось с одного бархатного шара, сделанного к Новому году для своей ёлки. Сейчас это коллекция авторских игрушек, каждая из которых собирается вручную: обтяжка тканью, объёмная вышивка, жемчуг, кружево и стразы.</p>
+        <p>Параллельно выросла школа. В ней я делюсь техниками, которые отработала на своих изделиях, и тем, что узнала о дизайне пространства: как подобрать палитру, поставить свет и сочетать текстиль, чтобы дом ощущался своим.</p>
+      </div>
+      <div class="cta-row about-cta">
+        <a class="btn-dark" href="obuchenie.html">Посмотреть программы</a>
+        <a class="link-inline" href="uroki.html">Начать с бесплатного урока</a>
+      </div>
+    </div>
+    <div class="hero-art"><div class="arch light"><img src="img/cozy-cat.jpg" alt="Девушка в вязаном свитере обнимает пушистого кота в тёплом домашнем свете" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap cta-cat-grid">
+    <img class="cta-cat" src="img/cat-curled.webp" alt="Нейрокот свернулся клубком, как ёлочный шар, в сияющих нитях огоньков" loading="lazy" width="564" height="528">
+    <div class="cta-cat-text">
+      <p class="eyebrow light">Будем на связи</p>
+      <h2>Новые работы, анонсы наборов и уроки выходят в Telegram-канале</h2>
+      <p>Бот <b>@SoulHomeRuBot</b>: заказ шара под цвет вашей ёлки или интерьера, вопросы о курсах и анонсы новых уроков.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Перейти в Telegram</a>
+        <a class="link-secondary" href="obuchenie.html#apply">Записаться на обучение</a>
+      </div>
     </div>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <span>© Soul of House</span>
-    <div class="foot-links">
-      <a href="index.html">Главная</a>
-      <a href="pricing.html">Услуги</a>
-      <a href="quiz.html">Диагностика</a>
-      <a href="checklist.html">Чек-лист</a>
-      <a href="blog/index.html">Блог</a>
-      <a href="contact.html">Контакты</a>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="./"><span class="mark"></span> Soul of Home</a>
+        <p>Мастерская и школа ручной работы для уютного дома</p>
+      </div>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="./">Главная</a><a href="raboty.html">Мои работы</a><a href="obuchenie.html">Обучение</a><a href="uroki.html">Уроки</a><a href="https://t.me/SoulHomeRuBot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
     </div>
+    <p class="foot-note">© 2026 Soul of Home · Все изделия и фотографии — авторская ручная работа</p>
   </div>
 </footer>
+<script src="site.js" charset="utf-8"></script>
 
-<script>
-window.addEventListener('scroll',()=>{
- const h=document.documentElement.scrollHeight-innerHeight;
- document.getElementById('scrollProgress').style.width=(h>0?scrollY/h*100:0)+'%';
-});
-</script>
 </body>
 </html>
