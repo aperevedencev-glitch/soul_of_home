@@ -46,6 +46,9 @@
   // ----- форма записи: заявка в базу, дальше по желанию в Telegram -----
   var SUPABASE_URL = 'https://wuvadreohiphwevprwmk.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_QnCBQILrqr6PhrAE8521NA_edLJSMA-';
+  // Адрес бота Нейрокота с /lead на конце (папка bot/): копия заявки придёт мастеру в Telegram.
+  // Пока пусто — заявки только сохраняются в Supabase, как раньше.
+  var LEAD_URL = '';
   var form = document.getElementById('applyForm');
   if(form){
     var success = document.getElementById('successState');
@@ -75,8 +78,17 @@
       .then(function(res){ if(!res.ok) throw new Error(res.status); })
       .then(function(){
         document.getElementById('successCourse').textContent = r.value;
-        document.getElementById('successTg').href = 'https://t.me/SoulHomeRuBot?start=' + r.dataset.tg;
+        var tgLink = document.getElementById('successTg');
+        tgLink.href = 'https://t.me/SoulHomeRuBot?start=' + r.dataset.tg;
         form.hidden = true; intro.hidden = true; success.hidden = false;
+        // копия мастеру в Telegram; номер заявки в ссылке на бота связывает клиента с заявкой
+        if(LEAD_URL){
+          fetch(LEAD_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+            body: JSON.stringify({ form: 'apply', course: row.course, name: row.name, contact: row.contact, message: row.message || '', page: location.pathname }) })
+          .then(function(res){ return res.json(); })
+          .then(function(j){ if(j && j.ok && j.id) tgLink.href = 'https://t.me/SoulHomeRuBot?start=' + r.dataset.tg + '-' + String(j.id).toLowerCase(); })
+          .catch(function(){});
+        }
       }, function(){
         msg.classList.add('bad');
         msg.innerHTML = 'Не получилось отправить. Попробуйте ещё раз или напишите в <a href="https://t.me/SoulHomeRuBot?start=' + r.dataset.tg + '" target="_blank" rel="noopener">Telegram</a>.';

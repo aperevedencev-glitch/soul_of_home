@@ -1,0 +1,27 @@
+name = "soulhome-bot"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Адрес сайта на Vercel — для кнопок «Смотреть на сайте» и раздела «🌐 Сайт»
+SITE_URL = ""
+# Откуда принимать заявки (адрес сайта без пути). Пусто — с любого сайта.
+ALLOWED_ORIGIN = ""
+# Чат мастера: напишите боту /myid и вставьте число
+ADMIN_CHAT_ID = ""
+
+# Память бота: воронка «Офис к Новому году», история диалога с ИИ, защита от спама.
+# Создайте namespace: npx wrangler kv namespace create SOULHOME_KV — и вставьте его id.
+[[kv_namespaces]]
+binding = "KV"
+id = "ВСТАВЬТЕ_ID_KV"
+
+# Раз в 5 минут бот отправляет очередные сообщения воронки
+[triggers]
+crons = ["*/5 * * * *"]
+
+# Секреты задаются отдельно, не в этом файле:
+#   npx wrangler secret put BOT_TOKEN
+#   npx wrangler secret put WEBHOOK_SECRET
+#   npx wrangler secret put AI_API_KEY        (OpenRouter, необязательно)
+#   npx wrangler secret put ANTHROPIC_API_KEY (или Claude, необязательно)

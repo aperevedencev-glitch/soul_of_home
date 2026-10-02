@@ -29,6 +29,10 @@ Framework Preset — Other, Root Directory — корень, Build Command и Ou
 - Внутри claude.ai отвечает через ИИ claude.ai.
 - На Vercel отвечает функция `api/chat.js`. Добавьте в Vercel → Settings → Environment Variables ключ `ANTHROPIC_API_KEY` (из console.anthropic.com) и сделайте Redeploy. Модель можно сменить переменной `ANTHROPIC_MODEL`.
 - Без ключа чат предлагает написать в Telegram-бот @SoulHomeRuBot.
+
+## Telegram-бот Нейрокот (@SoulHomeRuBot)
+Папка `bot/`: консультант, заявки, воронка для компаний и уведомления о заявках с сайта. Работает на Cloudflare Workers.
+Инструкция по запуску — `bot/README.md`, тесты — `node bot/test.mjs`. Чтобы заявки с сайта приходили мастеру в Telegram, впишите адрес бота в `LEAD_URL` в `site.js`.
 - Знания Нейрокота записаны в двух местах: `RULES` в `site.js` и `api/_prompt.js`. Меняйте оба.
 
 ## Архив
