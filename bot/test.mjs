@@ -20,7 +20,7 @@ globalThis.fetch = async (url, opts={}) => {
   const result = m==='getMe'?{username:'SoulHomeRuBot'}:m==='getWebhookInfo'?{url:'https://w.dev/webhook'}:{message_id:7};
   return new Response(JSON.stringify({ok:true,result}));
 };
-const baseEnv = () => ({ BOT_TOKEN:'T', ADMIN_CHAT_ID:'100', WEBHOOK_SECRET:'x'.repeat(24), KV:new MemKV(), SITE_URL:'https://soul-of-home.vercel.app', ALLOWED_ORIGIN:'https://soul-of-home.vercel.app' });
+const baseEnv = () => ({ BOT_TOKEN:'T', ADMIN_CHAT_ID:'100', WEBHOOK_SECRET:'x'.repeat(24), KV:new MemKV(),  });
 let env = baseEnv();
 const ctx = { w:[], waitUntil(p){this.w.push(p);} };
 const tgc = () => calls.filter(c=>c.u.includes('api.telegram.org')).map(c=>({m:c.u.split('/').pop(),...c.body}));
@@ -41,7 +41,7 @@ await t('кнопки меню: коллекция, обучение, уроки
   await hook(msg('🎓 Обучение')); assert.equal(tgc()[0].reply_markup.inline_keyboard.length,6);
   await hook(msg('📚 Бесплатные уроки')); assert.equal(tgc()[0].reply_markup.inline_keyboard.length,8);
   await hook(msg('✍️ Оставить заявку')); assert.equal(tgc()[0].reply_markup.inline_keyboard.length,8);
-  await hook(msg('🌐 Сайт')); assert.match(tgc()[0].text,/soul-of-home\.vercel\.app\/obuchenie/); });
+  await hook(msg('🌐 Сайт')); assert.match(tgc()[0].text,/https:\/\/soulofhome\.ru\/obuchenie/); });
 await t('карточка курса и урока', async()=>{ await hook(cb('course:embroidery')); assert.match(tgc()[1].text,/Вышивка, жемчуг/); await hook(cb('lesson:3')); assert.match(tgc()[1].text,/первый бархатный шар/); });
 await t('заявка на курс: подсказка → комментарий → мастеру и клиенту', async()=>{
   await hook(cb('lead:velvet')); assert.match(tgc()[1].text,/#заявка:velvet/);
@@ -98,7 +98,7 @@ await t('заблокировавший бота клиент помечаетс
 await t('/funnel считает статусы', async()=>{ await hook(adm('/funnel')); assert.match(tgc()[0].text,/Вошли: 1/); });
 
 // ---- заявки с сайта ----
-const site='https://soul-of-home.vercel.app';
+const site='https://soulofhome.ru';
 async function lead(body,origin=site,ip='1.1.1.1'){ calls=[]; return worker.fetch(new Request('https://w.dev/lead',{method:'POST',headers:{origin,'cf-connecting-ip':ip},body:JSON.stringify(body)}),env,ctx); }
 await t('заявка «Офис»: номер, поля, ответ {ok,id}', async()=>{ env=baseEnv(); const r=await lead({form:'office',name:'Ольга',company:'ООО Ромашка',phone:'+7 (916) 123-45-67',email:'o@r.ru',date:'20.12',zone:'ресепшн',page:'/kompanii'});
   assert.equal(r.status,200); const j=await r.json(); assert.match(j.id,/^[A-Z0-9]{5}$/); assert.equal(r.headers.get('access-control-allow-origin'),site);
@@ -132,9 +132,10 @@ await t('заказ шара и заявка воронки тоже сохра�
   await hook(cb('send:order')); assert.equal(sb()[0].course,'Заказ шара');
   await hook(cb('lead:other')); await hook(msg('Есть доставка в Казань?')); assert.equal(sb().length,0);
   env=baseEnv(); await hook(msg('/start office')); await hook(cb('fn:lead:estimate')); assert.equal(sb()[0].course,'Оформление офиса'); });
-await t('без SITE_URL: кнопки на сайт скрыты, «Сайт» отвечает мягко', async()=>{ env={...baseEnv(),SITE_URL:''};
+await t('SITE_URL="" явно: кнопки на сайт скрыты, «Сайт» отвечает мягко', async()=>{ env={...baseEnv(),SITE_URL:''};
   await hook(msg('🎄 Коллекция шаров')); assert.equal(tgc()[0].reply_markup.inline_keyboard.length,1);
   await hook(msg('🌐 Сайт')); assert.match(tgc()[0].text,/скоро откроется/); });
-await t('ALLOWED_ORIGIN не задан — заявки принимаются с любого сайта', async()=>{ env={...baseEnv(),ALLOWED_ORIGIN:''}; const r=await lead({form:'apply',course:'x',name:'y',contact:'@zz'},'https://any.site','1.2.3.4'); assert.equal(r.status,200); });
+await t('www.soulofhome.ru тоже принимается; ALLOWED_ORIGIN=* — с любого сайта', async()=>{ env=baseEnv(); assert.equal((await lead({form:'apply',course:'x',name:'y',contact:'@zz'},'https://www.soulofhome.ru','1.2.3.5')).status,200); env={...baseEnv(),ALLOWED_ORIGIN:'*'}; const r=await lead({form:'apply',course:'x',name:'y',contact:'@zz'},'https://any.site','1.2.3.4'); assert.equal(r.status,200); });
 
+await t('по умолчанию ссылки ведут на soulofhome.ru', async()=>{ env=baseEnv(); await hook(msg('🎄 Коллекция шаров')); assert.equal(tgc()[0].reply_markup.inline_keyboard[1][0].url,'https://soulofhome.ru/raboty'); });
 console.log(`\n${ok} тестов пройдено`);

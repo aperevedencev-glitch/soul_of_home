@@ -18,8 +18,8 @@
  *   BOT_TOKEN        — токен @BotFather (секрет)
  *   ADMIN_CHAT_ID    — чат мастера: напишите боту /myid
  *   WEBHOOK_SECRET   — любая строка из латиницы и цифр, 20+ символов (секрет)
- *   SITE_URL         — адрес сайта на Vercel, например https://soul-of-home.vercel.app/ (без него кнопки «на сайт» скрыты)
- *   ALLOWED_ORIGIN   — откуда принимать заявки, например https://soul-of-home.vercel.app (несколько — через запятую; пусто — с любого)
+ *   SITE_URL         — адрес сайта, по умолчанию https://soulofhome.ru/
+ *   ALLOWED_ORIGIN   — откуда принимать заявки, по умолчанию https://soulofhome.ru и https://www.soulofhome.ru (несколько — через запятую; * — с любого)
  *   SUPABASE_URL, SUPABASE_KEY — необязательно: куда сохранять заявки из бота (по умолчанию — проект сайта, публичный ключ)
  *   AI_API_KEY, AI_BASE_URL, AI_MODEL — ИИ через OpenAI-совместимый сервис (по умолчанию OpenRouter, бесплатная Qwen)
  *   ANTHROPIC_API_KEY, ANTHROPIC_MODEL — или Claude (используется, если AI_API_KEY пуст)
@@ -37,7 +37,8 @@
    ===================================================================================== */
 
 const SITE_NAME = 'Soul of Home';
-const DEFAULT_ORIGIN = '*';
+const DEFAULT_SITE = 'https://soulofhome.ru/';
+const DEFAULT_ORIGIN = 'https://soulofhome.ru,https://www.soulofhome.ru';
 const SUPABASE_DEFAULT = { url: 'https://wuvadreohiphwevprwmk.supabase.co', key: 'sb_publishable_QnCBQILrqr6PhrAE8521NA_edLJSMA-' };
 const DEFAULT_PHOTO = 'https://raw.githubusercontent.com/aperevedencev-glitch/soul_of_house/main/soulhome-bot/neurocat.jpg';
 
@@ -233,7 +234,7 @@ const COURSE_BY_ID = Object.fromEntries(COURSES.map((c) => [c[0], c]));
    ===================================================================================== */
 
 const tokenOf = (env) => env.BOT_TOKEN || env.TELEGRAM_BOT_TOKEN;
-const siteOf = (env) => (env.SITE_URL ? env.SITE_URL.trim().replace(/\/?$/, '/') : '');
+const siteOf = (env) => (env.SITE_URL ?? DEFAULT_SITE).trim().replace(/\/?$/, '/').replace(/^\/$/, '');
 const isAdmin = (env, chatId) => env.ADMIN_CHAT_ID && String(chatId) === String(env.ADMIN_CHAT_ID);
 
 async function tg(env, method, payload) {

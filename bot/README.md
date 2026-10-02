@@ -45,8 +45,8 @@
 |---|---|---|
 | `BOT_TOKEN` | Secret | токен @SoulHomeRuBot |
 | `WEBHOOK_SECRET` | Secret | латиница и цифры, 20+ символов, например `SoulHome2026SecretKey99` |
-| `SITE_URL` | Text | адрес сайта на Vercel, например `https://soul-of-home.vercel.app/` |
-| `ALLOWED_ORIGIN` | Text | тот же адрес без пути: `https://soul-of-home.vercel.app` |
+| `SITE_URL` | Text | `https://soulofhome.ru/` (можно не задавать — это значение по умолчанию) |
+| `ALLOWED_ORIGIN` | Text | `https://soulofhome.ru,https://www.soulofhome.ru` (тоже по умолчанию) |
 | `ADMIN_CHAT_ID` | Text | пока пусто, см. шаг 6 |
 | `AI_API_KEY` | Secret | необязательно: ключ [OpenRouter](https://openrouter.ai/keys) (есть бесплатные модели) |
 | `ANTHROPIC_API_KEY` | Secret | необязательно: ключ Claude, если не задан `AI_API_KEY` |
@@ -67,7 +67,7 @@ var LEAD_URL = 'https://soulhome-bot.ваше-имя.workers.dev/lead';
 ## Проверка
 - `/status` — токен, вебхук (`webhook_points_here: true`), KV, ИИ, последняя ошибка.
 - `/test-lead?key=ВАШ_WEBHOOK_SECRET` — мастеру придёт тестовая заявка.
-- Тесты без интернета: `node bot/test.mjs` (42 сценария).
+- Тесты без интернета: `node bot/test.mjs` (43 сценария).
 
 ## Как поменять тексты
 Всё в начале `worker.js`: `WELCOME`, `COLLECTION`, `COURSES`, `LESSONS`, `FAQ`, воронка — `STEPS` и `PACKAGES`. Знания для ИИ собираются из этих же текстов. На сайте те же сведения записаны в `api/_prompt.js` и `RULES` в `site.js`: меняя содержание, правьте все три места.
